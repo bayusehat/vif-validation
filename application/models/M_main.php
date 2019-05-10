@@ -1,5 +1,5 @@
 <?php if(!defined('BASEPATH')) exit('No direct script allowed');
-
+use \Firebase\JWT\JWT;
 class M_main extends CI_Model{
 
 	function get_user($q) {
@@ -11,6 +11,14 @@ class M_main extends CI_Model{
 		return $this->db->where('username', $username)
 						->where('password',$password)
 						->get('m_user');
+	}
+
+	public function decoded_token_for_session($token)
+	{
+		$kunci = $this->config->item('thekey');
+		$decoded = JWT::decode($token, $kunci, array('HS256'));
+
+		return $decoded;
 	}
 
 	public function login($username,$password)
@@ -42,23 +50,19 @@ class M_main extends CI_Model{
 		curl_close($ch);
 
 		$data = json_decode($result,true);
-		$u = $data['username'];
-		$p = $data['password'];
-		$t = $data['token'];
-		$e = $data['exp'];
-		$i = $data['id'];
-		$query = $this->get_row($u,$p);
-		if($query->num_rows() > 0){
-			$sess = array(
-				'id' => $i,
-				'token' => $t,
-				'exp' => date('d F Y H:i:s',$e)
+		
+		if($data['token'] != ""){
+			$userdata = array(
+				'username' => $username,
+				'login' => TRUE,
+				'token' =>  $data['token']
 			);
-			$this->session->set_userdata($sess);
+			$this->session->set_userdata($userdata);
 			return TRUE;
 		}else{
 			return FALSE;
 		}
+
 	}
 
 	

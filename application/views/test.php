@@ -5,9 +5,12 @@
 </head>
 <body>
 	<?php
-		echo $this->session->userdata('id')."</br>";
+		echo $this->session->userdata('login')."</br>";
 		echo $this->session->userdata('token')."</br>";
-		echo $this->session->userdata('exp');
+		echo $this->session->userdata('username');
+		echo 'Berhasil';
 	?>
+
+	<a href="<?= base_url('index.php/login/logout');?>">Logout</a>
 </body>
 </html>

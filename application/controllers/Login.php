@@ -9,9 +9,19 @@ class Login extends CI_Controller {
 		$this->load->model('m_main');
 	}
 
+	public function islogged()
+	{
+		if($this->session->userdata('login') == FALSE)
+		redirect('/','refresh');
+	}
+
 	public function index()
 	{
-		$this->load->view('login');
+		if($this->session->userdata('login') == TRUE){
+			$this->load->view('test');
+		}else{
+			$this->load->view('login');
+		}
 	}
 
 	public function login_user()
@@ -24,13 +34,39 @@ class Login extends CI_Controller {
 
 		if ($this->form_validation->run() == TRUE) {
 			if($this->m_main->login($username,$password)){
-				$this->load->view('test');
+				$data = array(
+					'msg' => 'Success', 
+				);
 			}else{
-				echo "Gagal";
+				$data = array(
+					'msg' => 'Failed', 
+				);
 			}
 		} else {
-			echo validation_errors();
+			$data = array(
+				'msg' => validation_errors(), 
+			);
 		}
+
+		echo json_encode($data);
+	}
+
+	public function test()
+	{
+		$this->islogged();
+		$this->load->view('test');
+	}
+
+	public function logout()
+	{
+		$data = array(
+			'login' => FALSE,
+			'username' => '',
+			'token' => ''
+		);
+
+		$this->session->sess_destroy($data);
+		redirect('/','refresh');
 	}
 }
 
