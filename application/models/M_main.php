@@ -32,7 +32,7 @@ class M_main extends CI_Model{
 
 		$userData = array(
 		    'username' => $username,
-		    'password' => sha1($password)
+		    'password' => $password
 		);
 
 		$ch = curl_init($url);
@@ -50,12 +50,13 @@ class M_main extends CI_Model{
 		curl_close($ch);
 
 		$data = json_decode($result,true);
-		
+
 		if($data['token'] != ""){
 			$userdata = array(
 				'username' => $username,
 				'login' => TRUE,
-				'token' =>  $data['token']
+				'token' =>  $data['token'],
+				'exp' => $data['exp']
 			);
 			$this->session->set_userdata($userdata);
 			return TRUE;

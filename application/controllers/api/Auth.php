@@ -16,7 +16,7 @@ class Auth extends BD_Controller {
     public function login_post()
     {
         $u = $this->post('username');
-        $p = $this->post('password');
+        $p = sha1($this->post('password'));
         $kunci = $this->config->item('thekey');
         $invalidLogins= [
             'token' => "",
@@ -29,7 +29,8 @@ class Auth extends BD_Controller {
             $date = new DateTime();
             $token['iat'] = $date->getTimestamp();
             $token['exp'] = $date->getTimestamp() + 60*60*5; 
-            $output['token'] = JWT::encode($token,$kunci); 
+            $output['token'] = JWT::encode($token,$kunci);
+            $output['exp'] = $date->getTimestamp() + 60*60*5;
             $this->set_response($output, REST_Controller::HTTP_OK); 
         }
         else {
