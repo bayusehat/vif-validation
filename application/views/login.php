@@ -124,11 +124,11 @@
 			event.preventDefault();
 			var email  = $("#email").val();
 			var password  = $("#password").val();
-			var url = "<?php echo base_url('index.php/login');?>";
+			var url = "<?php echo base_url('login');?>";
 
 				$.ajax({
 					type : "POST",
-					url : "<?php echo base_url('index.php/login/login_user');?>",
+					url : "<?php echo base_url('login/login_user');?>",
 					dataType : "json",
 					data : {
 						email : email,

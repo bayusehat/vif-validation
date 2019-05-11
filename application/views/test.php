@@ -14,6 +14,6 @@
 		echo date('Y-m-d H:i:s',$exp);
 	?>
 
-	<a href="<?= base_url('index.php/login/logout');?>">Logout</a>
+	<a href="<?= base_url('login/logout');?>">Logout</a>
 </body>
 </html>

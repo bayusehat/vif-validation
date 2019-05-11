@@ -26,8 +26,8 @@ class Login extends CI_Controller {
 
 	public function login_user()
 	{
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
+		$email = htmlspecialchars($this->input->post('email'));
+		$password = htmlspecialchars($this->input->post('password'));
 
 		$this->form_validation->set_rules('email', 'email', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
