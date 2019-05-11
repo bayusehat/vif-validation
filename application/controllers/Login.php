@@ -36,23 +36,23 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			if($this->m_main->login($email,$password)){
 				$data = array(
-					'msg' => 'Anda berhasil login',
+					'msg' => 'Login Success, welcome!',
 					'valid' =>  true 
 				);
 			}else{
-				// $data = array(
-				// 	'msg' => 'Username dan password tidak ditemukan', 
-				// 	'valid' => false
-				// );
+				$data = array(
+					'msg' => 'Combine e-mail and password not found', 
+					'valid' => false
+				);
 			}
 		} else {
-			// $data = array(
-			// 	'msg' => validation_errors(),
-			// 	'valid' => false 
-			// );
+			$data = array(
+				'msg' => validation_errors(),
+				'valid' => false 
+			);
 		}
 
-		// echo json_encode($data);
+		echo json_encode($data);
 	}
 
 	public function test()

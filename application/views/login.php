@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/vif.png"/>
 
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css">
 
@@ -32,13 +32,13 @@
 					<img src="<?= base_url();?>assets/images/vif.png" alt="IMG" style="width:300px;padding-top: 40px">
 				</div>
 
-				<form class="login100-form validate-form" method="post" id="loginForm" action="<?php echo base_url('index.php/login/login_user');?>">
+				<form class="login100-form validate-form" method="post" id="loginForm">
 					<span class="login100-form-title">
 						Validation App Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="email" name="email" id="email" placeholder="Your e-mail">
+						<input class="input100" type="text" name="email" id="email" placeholder="Your username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -54,10 +54,10 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<input type="submit" name="submit" value="submit" class="login100-form-btn">
-						<!-- <button class="login100-form-btn" id="btnLogin">
+						<!-- <input type="submit" name="submit" value="submit" class="login100-form-btn"> -->
+						<button class="login100-form-btn" id="btnLogin">
 							Login
-						</button> -->
+						</button>
 					</div>
 
 					<!-- <div class="text-center p-t-12">
@@ -99,56 +99,60 @@
 	</script>
 <!--===============================================================================================-->
 	<script type="text/javascript">
-		// function swal_success(msg) {
-		// 	swal({
-		//         title: "Success",
-		//         text: msg,
-		//         timer: 2500,
-		//         showConfirmButton: false,
-		//         type: 'success'
-		//     });
-		// }
 
-		// function swal_failed(msg) {
-		// 	swal({
-		//         title: "Failed",
-		//         text: msg,
-		//         timer: 2500,
-		//         showConfirmButton: false,
-		//         type: 'error'
-		//     });
-		// }
+		function swal_success(msg) {
+			swal({
+		        title: "Success",
+		        text: msg,
+		        timer: 2500,
+		        showConfirmButton: false,
+		        type: 'success'
+		    });
+		}
 
-		// $("#btnLogin").click(function(event){
-		// 	event.preventDefault();
-		// 	var email  = $("#email").val();
-		// 	var password  = $("#password").val();
-		// 	var url = "<?php echo base_url('index.php/login');?>";
+		function swal_failed(msg) {
+			swal({
+		        title: "Failed",
+		        text: msg,
+		        timer: 2500,
+		        showConfirmButton: false,
+		        type: 'error'
+		    });
+		}
 
-		// 		$.ajax({
-		// 			type : "POST",
-		// 			url : "<?php echo base_url('index.php/login/login_user');?>",
-		// 			dataType : "json",
-		// 			data : {
-		// 				email : email,
-		// 				password : password
-		// 			},
-		// 			success:function(data){
-		// 				if(data.valid == true){
-		// 					swal_success(data.msg);
-		// 					setTimeout(function(){
-		// 						window.location = url;
-		// 					},1000);
-		// 				}else{
-		// 					swal_failed(data.msg);
-		// 				}
-		// 			},
-		// 			error:function(data){
-		// 				swal_failed(data.msg);
-		// 				$('form').trigger('reset');
-		// 			}
-		// 		});
-		// 	});
+		$("#btnLogin").click(function(event){
+			event.preventDefault();
+			var email  = $("#email").val();
+			var password  = $("#password").val();
+			var url = "<?php echo base_url('index.php/login');?>";
+
+				$.ajax({
+					type : "POST",
+					url : "<?php echo base_url('index.php/login/login_user');?>",
+					dataType : "json",
+					data : {
+						email : email,
+						password : password
+					},
+					success:function(data){
+						if(data.valid == true){
+							swal_success(data.msg);
+							setTimeout(function(){
+								window.location = url;
+							},1000);
+						}else{
+							swal_failed(data.msg);
+							$('form').trigger('reset');
+							$("#username").focus();
+						}
+					},
+					error:function(data){
+						swal_failed(data.msg);
+						$('form').trigger('reset');
+						$("#username").focus();
+					}
+				});
+			});
 	</script>
 
 </body>
