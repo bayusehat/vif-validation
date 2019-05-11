@@ -26,29 +26,33 @@ class Login extends CI_Controller {
 
 	public function login_user()
 	{
-		$username = $this->input->post('username');
+		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$this->form_validation->set_rules('username', 'username', 'trim|required');
+		$this->form_validation->set_rules('email', 'email', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$this->form_validation->set_error_delimiters('','');
 
 		if ($this->form_validation->run() == TRUE) {
-			if($this->m_main->login($username,$password)){
+			if($this->m_main->login($email,$password)){
 				$data = array(
-					'msg' => 'Success', 
+					'msg' => 'Anda berhasil login',
+					'valid' =>  true 
 				);
 			}else{
-				$data = array(
-					'msg' => 'Failed', 
-				);
+				// $data = array(
+				// 	'msg' => 'Username dan password tidak ditemukan', 
+				// 	'valid' => false
+				// );
 			}
 		} else {
-			$data = array(
-				'msg' => validation_errors(), 
-			);
+			// $data = array(
+			// 	'msg' => validation_errors(),
+			// 	'valid' => false 
+			// );
 		}
 
-		echo json_encode($data);
+		// echo json_encode($data);
 	}
 
 	public function test()

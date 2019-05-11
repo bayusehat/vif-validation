@@ -6,11 +6,14 @@ class M_main extends CI_Model{
 		return $this->db->get_where('m_user',$q);
 	}
 
-	public function get_row($username,$password)
+	public function get_row($email,$password)
 	{
-		return $this->db->where('username', $username)
+		return $this->db->select('user.*,emlployee.*')
+						->from('user')
+						->join('emlployee','emlployee.emplooyeeid=user.emplooyeeid')
+						->where('email', $email)
 						->where('password',$password)
-						->get('m_user');
+						->get();
 	}
 
 	public function decoded_token_for_session($token)
@@ -21,7 +24,7 @@ class M_main extends CI_Model{
 		return $decoded;
 	}
 
-	public function login($username,$password)
+	public function login($email,$password)
 	{
 		$apiKey = 'apikey-validation';
 
@@ -31,16 +34,19 @@ class M_main extends CI_Model{
 		$url = base_url().'api/auth/login';
 
 		$userData = array(
-		    'username' => $username,
+		    'email' => $email,
 		    'password' => $password
 		);
 
 		$ch = curl_init($url);
 
 		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
 		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array("X-API-KEY: " . $apiKey));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			"X-API-KEY: " . $apiKey,
+			"Content-type: application/x-www-form-urlencoded"
+		));
 		curl_setopt($ch, CURLOPT_USERPWD, "$apiUser:$apiPass");
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $userData);
@@ -50,21 +56,22 @@ class M_main extends CI_Model{
 		curl_close($ch);
 
 		$data = json_decode($result,true);
+		print_r($userData);
+		echo json_encode($data);
 
-		if($data['token'] != ""){
-			$userdata = array(
-				'username' => $username,
-				'login' => TRUE,
-				'token' =>  $data['token'],
-				'exp' => $data['exp']
-			);
-			$this->session->set_userdata($userdata);
-			return TRUE;
-		}else{
-			return FALSE;
-		}
+		// if($data['token'] != ""){
+		// 	$userdata = array(
+		// 		'email' => $email,
+		// 		'login' => TRUE,
+		// 		'token' =>  $data['token'],
+		// 		'exp' => $data['exp']
+		// 	);
+		// 	$this->session->set_userdata($userdata);
+		// 	return TRUE;
+		// }else{
+		// 	return FALSE;
+		// }
 
 	}
-
 	
 }

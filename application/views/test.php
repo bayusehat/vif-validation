@@ -7,7 +7,7 @@
 	<?php
 		echo $this->session->userdata('login')."</br>";
 		echo $this->session->userdata('token')."</br>";
-		echo $this->session->userdata('username');
+		echo $this->session->userdata('email');
 		echo 'Berhasil';
 		$exp = $this->session->userdata('exp');
 

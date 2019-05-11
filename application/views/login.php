@@ -19,6 +19,8 @@
 
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
 
 </head>
 <body>
@@ -27,16 +29,16 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="<?= base_url();?>assets/images/img-01.png" alt="IMG">
+					<img src="<?= base_url();?>assets/images/vif.png" alt="IMG" style="width:300px;padding-top: 40px">
 				</div>
 
-				<form class="login100-form validate-form" method="post" id="loginForm">
+				<form class="login100-form validate-form" method="post" id="loginForm" action="<?php echo base_url('index.php/login/login_user');?>">
 					<span class="login100-form-title">
 						Validation App Login
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username" id="username" placeholder="Username">
+						<input class="input100" type="email" name="email" id="email" placeholder="Your e-mail">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -44,7 +46,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" id="password" placeholder="Password">
+						<input class="input100" type="password" name="password" id="password" placeholder="Your password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -52,24 +54,25 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" id="btnLogin">
+						<input type="submit" name="submit" value="submit" class="login100-form-btn">
+						<!-- <button class="login100-form-btn" id="btnLogin">
 							Login
-						</button>
+						</button> -->
 					</div>
 
-					<div class="text-center p-t-12">
+					<!-- <div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
 						</span>
 						<a class="txt2" href="#">
 							Username / Password?
 						</a>
-					</div>
+					</div> -->
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="#">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+							2019 &copy; Victory International Future
+							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
 						</a>
 					</div>
 				</form>
@@ -95,31 +98,57 @@
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/js/main.js"></script>
 	<script type="text/javascript">
-		$("#btnLogin").click(function(event){
-			var username  = $("#username").val();
-			var password  = $("#password").val();
-			var url = "<?php echo base_url('index.php/login');?>";
+		// function swal_success(msg) {
+		// 	swal({
+		//         title: "Success",
+		//         text: msg,
+		//         timer: 2500,
+		//         showConfirmButton: false,
+		//         type: 'success'
+		//     });
+		// }
 
-				$.ajax({
-					type : "POST",
-					url : "<?php echo base_url('index.php/login/login_user');?>",
-					dataType : "json",
-					data : {
-						username : username,
-						password : password
-					},
-					success:function(data){
-						alert(data.msg);
-						window.location = url;
-					},
-					error:function(data){
-						alert(data.msg);
-						$('form').trigger('reset');
-					}
-				});
-			});
+		// function swal_failed(msg) {
+		// 	swal({
+		//         title: "Failed",
+		//         text: msg,
+		//         timer: 2500,
+		//         showConfirmButton: false,
+		//         type: 'error'
+		//     });
+		// }
+
+		// $("#btnLogin").click(function(event){
+		// 	event.preventDefault();
+		// 	var email  = $("#email").val();
+		// 	var password  = $("#password").val();
+		// 	var url = "<?php echo base_url('index.php/login');?>";
+
+		// 		$.ajax({
+		// 			type : "POST",
+		// 			url : "<?php echo base_url('index.php/login/login_user');?>",
+		// 			dataType : "json",
+		// 			data : {
+		// 				email : email,
+		// 				password : password
+		// 			},
+		// 			success:function(data){
+		// 				if(data.valid == true){
+		// 					swal_success(data.msg);
+		// 					setTimeout(function(){
+		// 						window.location = url;
+		// 					},1000);
+		// 				}else{
+		// 					swal_failed(data.msg);
+		// 				}
+		// 			},
+		// 			error:function(data){
+		// 				swal_failed(data.msg);
+		// 				$('form').trigger('reset');
+		// 			}
+		// 		});
+		// 	});
 	</script>
 
 </body>
