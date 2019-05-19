@@ -22,10 +22,10 @@
 	<![endif]-->
 
 	<!--===============================================================================================-->	
-	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?= base_url();?>assets/js/jquery-1.11.1.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/js/chart.min.js"></script>
 	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
