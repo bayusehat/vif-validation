@@ -5,51 +5,51 @@
 				<div class="col-md-3">
 					<div class="form-group">
 						<label>Subject</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="File" id="">
+						<input type="text" name="subject" class="form-control" placeholder="Subject" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
 						<label>Description</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="Date Form" id="">
+						<input type="text" name="description" class="form-control" placeholder="Description" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Date</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="Subject" id="">
+						<label>Currency</label>
+						<input type="text" name="currency" class="form-control" placeholder="currency" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Expired</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="Expired" id="">
+						<label>Amount in Word</label>
+						<input type="text" name="amount_in_word" class="form-control" placeholder="Amount in word" id="">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Dummy</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="File" id="">
+						<label>Bank</label>
+						<input type="text" name="bank" class="form-control" placeholder="File" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Dummy</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="Date Form" id="">
+						<label>Account</label>
+						<input type="text" name="account_number" class="form-control" placeholder="Account Number" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Dummy</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="Subject" id="">
+						<label>Name</label>
+						<input type="text" name="account_name" class="form-control" placeholder="Account Name" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Dummy</label>
-						<input type="text" name="" class="form-control form-control-sm" placeholder="Expired" id="">
+						<label>Stage</label>
+						<input type="text" name="stage" class="form-control" placeholder="Stage" id="">
 					</div>
 				</div>
 			</div>
@@ -61,17 +61,15 @@
 					</div>
 					<table class="table table-striped table-bordered table-sm">
 						<tr>
-							<th>Akun</th>
+							<th>Code</th>
 							<th>Description</th>
-							<th>Qty</th>
 							<th>Amount</th>
 							<th>Action</th>
 						</tr>
 						<tr>
-							<td><input type="text" name="" placeholder="Dummy" class="form-control"></td>
-							<td><input type="text" name="" placeholder="Dummy" class="form-control"></td>
-							<td><input type="text" name="" placeholder="Dummy" class="form-control"></td>
-							<td><input type="text" name="" placeholder="Dummy" class="form-control"></td>
+							<td><input type="text" name="code" placeholder="Code" class="form-control"></td>
+							<td><input type="text" name="description_detail" placeholder="Description" class="form-control"></td>
+							<td><input type="text" name="amount" placeholder="Amount" class="form-control"></td>
 							<td><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
 						</tr>
 					</table>

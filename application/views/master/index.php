@@ -75,11 +75,11 @@
 
 <script type="text/javascript">
 	function getBranch() {
-		viewModel.ajaxPost("/vif-validation/aclmaster/getdatabranch",{},function(res) {
+		viewModel.ajaxPost(base_url+"aclmaster/getdatabranch",{},function(res) {
 			console.log(res);
 		})
 	}
 	$(function() {
-		getBranch()
+		getBranch();
 	})
 </script>

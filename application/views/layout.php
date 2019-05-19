@@ -8,15 +8,11 @@
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
-<<<<<<< HEAD
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-=======
 
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 	<!-- data table -->
 	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css"/> -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-	
->>>>>>> origin/master
 	<!--Custom Font-->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
@@ -40,7 +36,9 @@
 	<!--===============================================================================================-->
 	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
 	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>
-
+	<script type="text/javascript">
+		var base_url = "<?= base_url();?>";
+	</script>
 	<style type="text/css">
 		.pad-rl{
 			padding: 15px;
@@ -219,23 +217,21 @@
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 	<script>
-		window.onload = function () {
-			var chart1 = document.getElementById("line-chart").getContext("2d");
-			window.myLine = new Chart(chart1).Line(lineChartData, {
-			responsive: true,
-			scaleLineColor: "rgba(0,0,0,.2)",
-			scaleGridLineColor: "rgba(0,0,0,.05)",
-			scaleFontColor: "#c5c7cc"
-			});
-		};
+		// window.onload = function () {
+		// 	var chart1 = document.getElementById("line-chart").getContext("2d");
+		// 	window.myLine = new Chart(chart1).Line(lineChartData, {
+		// 	responsive: true,
+		// 	scaleLineColor: "rgba(0,0,0,.2)",
+		// 	scaleGridLineColor: "rgba(0,0,0,.05)",
+		// 	scaleFontColor: "#c5c7cc"
+		// 	});
+		// };
 
 		$(document).ready(function() {
 		    $('#tableForm').DataTable();
 		});
-=======
-	<script type="text/javascript">
+
 		ko.applyBindings(new AppViewModel());
->>>>>>> origin/master
 	</script>
 </body>
 </html>
