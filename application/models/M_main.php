@@ -8,9 +8,12 @@ class M_main extends CI_Model{
 
 	public function get_row($username,$password)
 	{
-		return $this->db->where('EMAIL', $username)
-						->where('PASSWORD',$password)
-						->get('user');
+		return $this->db->select('user.*,employee.NAME')
+						->from('user')
+						->join('employee','employee.EMPLOOYEEID=user.EMPLOOYEEID')
+						->where('user.EMAIL',$username)
+						->where('user.PASSWORD',$password)
+						->get();
 	}
 
 	public function decoded_token_for_session($token)
@@ -23,7 +26,7 @@ class M_main extends CI_Model{
 
 	public function login($username,$password)
 	{
-		$apiKey = 'apikey-validation';
+		$apiKey = 'YXBpLWFwaWtleS12YWxpZGF0aW9u';
 
 		$apiUser = "admin";
 		$apiPass = "1234";
@@ -54,15 +57,25 @@ class M_main extends CI_Model{
 
 		$data = json_decode($result,true);
 
-		// echo json_encode($data);
-
 		if($data['token'] != ""){
 			$userdata = array(
-				'username' => $username,
+				'username' => $data['username'],
 				'login' => TRUE,
-				'token' =>  $data['token']
+				'token' =>  $data['token'],
+				'exp' => $data['exp'],
+				'ip_address' => $_SERVER['REMOTE_ADDR']
 			);
 			$this->session->set_userdata($userdata);
+			$insert_session = array(
+				'USER_ID' => $data['id'],
+				'SESSION_USER' => $username,
+				'SESSION_STATUS' => TRUE,
+				'SESSION_MASSAGE' => 'SESSION',
+				'SESSION_IPADDRESS' => $_SERVER['REMOTE_ADDR'],
+				'SESSION_TOKEN' => $data['token'],
+				'SESSION_EXPIRED' => date('Y-m-d H:i:s',$data['exp'])
+			);
+			$this->db->insert('session', $insert_session);
 			return TRUE;
 		}else{
 			return FALSE;

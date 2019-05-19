@@ -18,7 +18,9 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata('login') == TRUE){
-			$this->load->view('test');
+			$data['title'] = 'Dashboard';
+			$data['main_view'] = 'dashboard';
+			$this->load->view('layout', $data);
 		}else{
 			$this->load->view('login');
 		}
@@ -26,8 +28,8 @@ class Login extends CI_Controller {
 
 	public function login_user()
 	{
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
+		$email = htmlspecialchars($this->input->post('email'));
+		$password = htmlspecialchars($this->input->post('password'));
 
 		$this->form_validation->set_rules('email', 'email', 'trim|required');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');

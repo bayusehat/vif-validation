@@ -3,7 +3,7 @@ body {
   padding-top: 60px;
   font-size: 14px;
   color: #444444;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Karla","Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 p {
   color: #777; }
@@ -55,8 +55,8 @@ h3, h4 {
 
 input.form-control {
   border: 1px solid #ddd;
-  box-shadow: none;
-  height: 46px; }
+  box-shadow: none; 
+}
 
 .bootstrap-table input.form-control {
   height: 34px; }

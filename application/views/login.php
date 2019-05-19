@@ -1,102 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Vif Validation Test Login</title>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/vif.png"/>
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/vendor/bootstrap/css/bootstrap.min.css">
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/vendor/animate/animate.css">
-	
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/vendor/css-hamburgers/hamburgers.min.css">
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/vendor/select2/select2.min.css">
-
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/util.css">
-	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/main.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script>
-
+	<title>Victory Internation Future</title>
+	<link href="<?= base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
+	<script src="<?= base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+	<script src="<?= base_url();?>assets/js/sweetalert/sweetalert2@7.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
-	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="<?= base_url();?>assets/images/vif.png" alt="IMG" style="width:300px;padding-top: 40px">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default">
+				<center><img src="<?= base_url();?>assets/images/vif.png" class="img-responsive"></center>
+				
+				<div class="panel-body">
+					<form role="form" method="post">
+						<fieldset>
+							<div class="form-group">
+								<input class="form-control" placeholder="E-mail" name="email" id="email" autofocus="" type="email">
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="Password" name="password" id="password" type="password">
+							</div>
+							<div class="checkbox">
+								<label>
+									<input name="remember" type="checkbox" value="Remember Me">Remember Me
+								</label>
+							</div>
+							<div class="form-group">
+								<button type="submit" id="btnLogin" class="btn btn-primary btn-block"> Login</button>
+							</div>
+						</fieldset>
+					</form>
 				</div>
-
-				<form class="login100-form validate-form" method="post" id="loginForm">
-					<span class="login100-form-title">
-						Validation App Login
-					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" id="email" placeholder="Your username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" id="password" placeholder="Your password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<!-- <input type="submit" name="submit" value="submit" class="login100-form-btn"> -->
-						<button class="login100-form-btn" id="btnLogin">
-							Login
-						</button>
-					</div>
-
-					<!-- <div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div> -->
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							2019 &copy; Victory International Future
-							<!-- <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> -->
-						</a>
-					</div>
-				</form>
 			</div>
-		</div>
-	</div>
-	
+		</div><!-- /.col-->
+	</div><!-- /.row -->	
 	
 
-	
-<!--===============================================================================================-->	
-	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
+<script src="<?= base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.min.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css"> -->
+</body>
+</html>
 <!--===============================================================================================-->
 	<script type="text/javascript">
 
@@ -124,11 +79,15 @@
 			event.preventDefault();
 			var email  = $("#email").val();
 			var password  = $("#password").val();
-			var url = "<?php echo base_url('index.php/login');?>";
+			var url = "<?php echo base_url('login');?>";
 
+			if(checkEmail(email) == false){
+				swal_failed('Email format is invalid');
+				$("#email").focus();
+			}else{
 				$.ajax({
 					type : "POST",
-					url : "<?php echo base_url('index.php/login/login_user');?>",
+					url : "<?php echo base_url('login/login_user');?>",
 					dataType : "json",
 					data : {
 						email : email,
@@ -143,16 +102,27 @@
 						}else{
 							swal_failed(data.msg);
 							$('form').trigger('reset');
-							$("#username").focus();
+							$("#email").focus();
 						}
 					},
 					error:function(data){
 						swal_failed(data.msg);
 						$('form').trigger('reset');
-						$("#username").focus();
+						$("#email").focus();
 					}
 				});
+			}
+				
 			});
+
+		function checkEmail(email) {
+			var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			  if(!regex.test(email)) {
+			    return false;
+			  }else{
+			    return true;
+  			}
+		}
 	</script>
 
 </body>
