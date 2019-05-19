@@ -137,7 +137,7 @@
 					</a></li>
 				</ul>
 			</li> -->
-			<li><a href="<?= base_url();?>login/logout" class="text-danger"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="<?= base_url();?>login/logout" style="color:red"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
