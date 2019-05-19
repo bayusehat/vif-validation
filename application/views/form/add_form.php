@@ -65,9 +65,9 @@
 							</thead>
 							<tbody id="amountDetail">
 								<tr>
-									<td><input type="text" name="code[]" placeholder="Code" class="form-control code"></td>
-									<td><input type="text" name="description_detail[]" placeholder="Description" class="form-control"></td>
-									<td><input type="text" name="amount[]" placeholder="Amount" class="form-control"></td>
+									<td><input type="text" name="code[0]" placeholder="Code" class="form-control code"></td>
+									<td><input type="text" name="description_detail[0]" placeholder="Description" class="form-control"></td>
+									<td><input type="text" name="amount[0]" placeholder="Amount" class="form-control"></td>
 									<td><button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash"></i></button></td>
 								</tr>
 								<tr id="last"></tr>
@@ -80,7 +80,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label>Send To</label>
 							<select class="form-control" name="">
 								<option value="">Select Destination</option>
@@ -89,10 +89,10 @@
 								<option>Dummy</option>
 								<option>Dummy</option>
 							</select>
-						</div>
+						</div> -->
 					</div>
 					<div class="col-md-6 col-sm-12">
-						<button type="submit" class="btn btn-success btn-block mt-3 right"><i class="fa fa-paper-plane"></i> Send Form</button>
+						<button type="submit" class="btn btn-success btn-block mt-3 right" id="btnSendForm"><i class="fa fa-paper-plane"></i> Send Form</button>
 					</div>
 				</div>
 			</div>
@@ -118,7 +118,15 @@
 		$("#detailTable").delegate("button", "click", function() {
 		   $(this).closest("tr").remove(); 
 		});
-	})
-	 
+	});
+
+	$("#btnSendForm").click(function(event) {
+		event.preventDefault();
+		var formData = $('form#formApplication').serialize();
+		viewModel.ajaxPost(base_url+"form/add_form_run",formData,function(res){
+			swal_success('Form berhasil terkirim');
+			$('form#formApplication').trigger('reset');
+		});
+	});
 	
 </script>

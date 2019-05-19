@@ -47,6 +47,25 @@ viewModel.ajaxFilePost = function(url, formData, fnOk, fnNok) {
     });
 }
 
+function swal_success(msg) {
+    swal({
+        title: "Success",
+        text: msg,
+        timer: 2500,
+        showConfirmButton: false,
+        type: 'success'
+    });
+}
+
+function swal_failed(msg) {
+    swal({
+        title: "Failed",
+        text: msg,
+        timer: 2500,
+        showConfirmButton: false,
+        type: 'error'
+    });
+}
 
 $(function() {
 	// console.log('test');

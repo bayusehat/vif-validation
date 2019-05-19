@@ -63,7 +63,8 @@ class M_main extends CI_Model{
 				'login' => TRUE,
 				'token' =>  $data['token'],
 				'exp' => $data['exp'],
-				'ip_address' => $_SERVER['REMOTE_ADDR']
+				'ip_address' => $_SERVER['REMOTE_ADDR'],
+				'id' => $data['id']
 			);
 			$this->session->set_userdata($userdata);
 			$insert_session = array(
@@ -83,5 +84,11 @@ class M_main extends CI_Model{
 
 	}
 
+	public function save_log($param)
+	{
+		$query = $this->db->insert_string('log', $param);
+		$exec  = $this->db->query($query);
+		return $this->db->affected_rows($exec);
+	}
 	
 }
