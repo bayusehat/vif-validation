@@ -29,6 +29,9 @@
 		.right{
 			float: right;
 		}
+		.border{
+			border: 0.5px solid lightblue;
+		}
 	</style>
 </head>
 <body>
@@ -134,7 +137,7 @@
 					</a></li>
 				</ul>
 			</li> -->
-			<li><a href="<?= base_url('login/logout');?>" class="text-danger"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<li><a href="<?= base_url();?>login/logout" class="text-danger"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -181,16 +184,50 @@
 	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
+	<script src="<?= base_url();?>assets/js/sweetalert/sweetalert2@7.js"></script>
 	<script>
 		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+			responsive: true,
+			scaleLineColor: "rgba(0,0,0,.2)",
+			scaleGridLineColor: "rgba(0,0,0,.05)",
+			scaleFontColor: "#c5c7cc"
+			});
+		};
+
+		function logout() {
+			swal({
+			    title: "Are you sure?",
+			    text: "You will not be able to recover this imaginary file!",
+			    type: "warning",
+			    showCancelButton: true,
+			    confirmButtonColor: "#DD6B55",
+			    confirmButtonText: "Yes, delete it!",
+			    cancelButtonText: "No, cancel plx!",
+			    closeOnConfirm: false,
+			    closeOnCancel: false
+			  },
+			    function (isConfirm) {
+			      if (isConfirm) {
+			        $.ajax({
+			          type: "POST",
+			          url: "<?= base_url();?>login/logout",
+			          data: data,
+			          success: function (data) {
+			            swal("Logout!", "Your imaginary file has been deleted.", "success");
+			          },
+			          error: function (data) {
+			            swal("NOT Deleted!", "Something blew up.", "error");
+			          }
+			        });
+			      } else {
+			        
+			      }
+			    });
+
+			  return false;
+		}
 	</script>
 		
 </body>
