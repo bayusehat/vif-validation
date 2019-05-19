@@ -1,24 +1,9 @@
+<script src="<?= base_url();?>assets/main/js/acl_master.js"></script>
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Master</h1>
 	</div>
 </div>
-<!-- <div class="panel panel-default">
-	<div class="panel-heading">Master</div>
-	<div class="panel-body">
-		<div class="col-md-12">
-			<ul>
-				<li>test 1</li>
-				<li>test 1</li>
-				<li>test 1</li>
-				<li>test 1</li>
-				<li>test 1</li>
-				<li>test 1</li>
-			</ul>
-		</div>
-	</div>
-</div> -->
-
 <style type="text/css">
 	/*.collapse-wrapper{
 		width: 95%;
@@ -30,6 +15,10 @@
 	.btn.no-border-radius{
 		border-radius: 0;
 	}*/
+	.mgb-10{
+		margin-bottom: 10px
+	}
+
 </style>
 
 <!-- <div class="collapse-wrapper">
@@ -53,19 +42,44 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane fade active in" id="tab1">
-						<div id="gridBranch"></div>
+						<div class="row">
+							<div class="col-md-12 mgb-10">
+								<button class="btn btn-sm btn-success pull-right">Add Branch</button>
+							</div>
+							<div class="col-md-12">
+								<div class="custom-grid" id="gridBranch"></div>
+							</div>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="tab2">
-						<h4>Tab 2</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor.</p>
+						<div class="row">
+							<div class="col-md-12 mgb-10">
+								<button class="btn btn-sm btn-success pull-right">Add Group</button>
+							</div>
+							<div class="col-md-12">
+								<div class="custom-grid" id="gridGroup"></div>
+							</div>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="tab3">
-						<h4>Tab 3</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor.</p>
+						<div class="row">
+							<div class="col-md-12 mgb-10">
+								<button class="btn btn-sm btn-success pull-right">Add Access</button>
+							</div>
+							<div class="col-md-12">
+								<div class="custom-grid" id="gridAccess"></div>
+							</div>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="tab4">
-						<h4>Tab 4</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget rutrum purus. Donec hendrerit ante ac metus sagittis elementum. Mauris feugiat nisl sit amet neque luctus, a tincidunt odio auctor.</p>
+						<div class="row">
+							<div class="col-md-12 mgb-10">
+								<button class="btn btn-sm btn-success pull-right">Add User</button>
+							</div>
+							<div class="col-md-12">
+								<div class="custom-grid" id="gridUser"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -73,13 +87,22 @@
 	</div>
 </div>
 
-<script type="text/javascript">
-	function getBranch() {
-		viewModel.ajaxPost(base_url+"aclmaster/getdatabranch",{},function(res) {
-			console.log(res);
-		})
-	}
-	$(function() {
-		getBranch();
-	})
-</script>
+<div id="modalBranch" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Branch</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

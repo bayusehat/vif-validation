@@ -20,7 +20,12 @@ class ACLMaster extends CI_Controller {
 	{
 		$data = $this->ACL_Model->GetBranch();
 
+		// $res = array('data' =>$data);
+
 		echo json_encode($data);
+		// echo (object)[
+		// 	"data" => $dt
+		// ];
 	}
 }
 
