@@ -76,7 +76,7 @@
 						</tr>
 					</table>
 					<div class="form-group">
-						<a href="#" class="btn btn-info btn-block btn-sm"><i class="fa fa-plus"></i></a>
+						<a href="#" class="btn btn-secondary border btn-block btn-sm"><i class="fa fa-plus"></i></a>
 					</div>
 				</div>
 			</div>
