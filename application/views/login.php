@@ -9,6 +9,7 @@
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
 	<script src="<?= base_url();?>assets/js/jquery-1.11.1.min.js"></script>
 	<script src="<?= base_url();?>assets/js/sweetalert/sweetalert2@7.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
@@ -79,7 +80,7 @@
 			var email  = $("#email").val();
 			var password  = $("#password").val();
 			var url = "<?php echo base_url('login');?>";
-			
+
 			if(checkEmail(email) == false){
 				swal_failed('Email format is invalid');
 				$("#email").focus();
@@ -101,13 +102,13 @@
 						}else{
 							swal_failed(data.msg);
 							$('form').trigger('reset');
-							$("#username").focus();
+							$("#email").focus();
 						}
 					},
 					error:function(data){
 						swal_failed(data.msg);
 						$('form').trigger('reset');
-						$("#username").focus();
+						$("#email").focus();
 					}
 				});
 			}
