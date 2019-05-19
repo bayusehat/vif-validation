@@ -18,7 +18,9 @@ class Login extends CI_Controller {
 	public function index()
 	{
 		if($this->session->userdata('login') == TRUE){
-			$this->load->view('test');
+			$data['title'] = 'Dashboard';
+			$data['main_view'] = 'dashboard';
+			$this->load->view('layout', $data);
 		}else{
 			$this->load->view('login');
 		}
