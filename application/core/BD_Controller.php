@@ -37,3 +37,11 @@ class BD_Controller extends REST_Controller
         }
     }
 }
+
+class Base_Controller extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+}
