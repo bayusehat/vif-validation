@@ -8,7 +8,15 @@
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+=======
+
+	<!-- data table -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css"/> -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+	
+>>>>>>> origin/master
 	<!--Custom Font-->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
@@ -16,6 +24,23 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<!--===============================================================================================-->	
+	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
+	<script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="<?= base_url();?>assets/js/chart.min.js"></script>
+	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
+	<script src="<?= base_url();?>assets/js/easypiechart.js"></script>
+	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
+	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
+	<script src="<?= base_url();?>assets/js/custom.js"></script>
+	<!--===============================================================================================-->
+	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
+	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>
+
 	<style type="text/css">
 		.pad-rl{
 			padding: 15px;
@@ -176,6 +201,7 @@
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 	
+<<<<<<< HEAD
 <!--===============================================================================================-->	
 	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -206,7 +232,10 @@
 		$(document).ready(function() {
 		    $('#tableForm').DataTable();
 		});
+=======
+	<script type="text/javascript">
+		ko.applyBindings(new AppViewModel());
+>>>>>>> origin/master
 	</script>
-		
 </body>
 </html>
