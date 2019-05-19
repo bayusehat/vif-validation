@@ -4,19 +4,19 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>No. Form</label>
+						<label>Subject</label>
 						<input type="text" name="" class="form-control form-control-sm" placeholder="File" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Date Form</label>
+						<label>Description</label>
 						<input type="text" name="" class="form-control form-control-sm" placeholder="Date Form" id="">
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<label>Subject</label>
+						<label>Date</label>
 						<input type="text" name="" class="form-control form-control-sm" placeholder="Subject" id="">
 					</div>
 				</div>
