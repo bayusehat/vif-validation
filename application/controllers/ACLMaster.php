@@ -11,6 +11,7 @@ class ACLMaster extends CI_Controller {
 
 	public function index()
 	{
+		$data["title"] = "Acl Master";
 		$data['main_view'] = 'master/index';
 		$this->load->view('layout', $data);
 	}

@@ -20,6 +20,23 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<!--===============================================================================================-->	
+	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
+	<script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+	<script src="<?= base_url();?>assets/js/chart.min.js"></script>
+	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
+	<script src="<?= base_url();?>assets/js/easypiechart.js"></script>
+	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
+	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
+	<script src="<?= base_url();?>assets/js/custom.js"></script>
+	<!--===============================================================================================-->
+	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
+	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>
+
 	<style type="text/css">
 		.pad-rl{
 			padding: 15px;
@@ -34,22 +51,6 @@
 			float: right;
 		}
 	</style>
-
-	<!--===============================================================================================-->	
-		<script src="<?= base_url();?>assets/js/jquery-1.11.1.min.js"></script>
-	<!--===============================================================================================-->
-		<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
-		<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.js"></script>
-	<!--===============================================================================================-->
-	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
-	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>
-	<script type="text/javascript">
-		var Model = {
-
-		}
-	</script>
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -189,34 +190,6 @@
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 	
-<!--===============================================================================================-->	
-	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/js/chart.min.js"></script>
-	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
-	<script src="<?= base_url();?>assets/js/easypiechart.js"></script>
-	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
-	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
-	<script src="<?= base_url();?>assets/js/custom.js"></script>
-	<script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-	<!-- <script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/custom.js"></script> -->
 	<script type="text/javascript">
 		ko.applyBindings(new AppViewModel());
 	</script>

@@ -75,7 +75,7 @@
 
 <script type="text/javascript">
 	function getBranch() {
-		viewModel.ajaxPost("getdatabranch",{},function(res) {
+		viewModel.ajaxPost("aclmaster/getdatabranch",{},function(res) {
 			console.log(res);
 		})
 	}
