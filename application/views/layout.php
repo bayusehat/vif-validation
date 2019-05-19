@@ -8,7 +8,7 @@
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
-	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 	<!--Custom Font-->
 	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
@@ -31,6 +31,10 @@
 		}
 		.border{
 			border: 0.5px solid lightblue;
+		}
+		.hr-line{
+			padding: 10px 0 5px 0px;
+			border-top: 1px solid lightgrey;
 		}
 	</style>
 </head>
@@ -185,6 +189,9 @@
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
 	<script src="<?= base_url();?>assets/js/sweetalert/sweetalert2@7.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 	<script>
 		window.onload = function () {
 			var chart1 = document.getElementById("line-chart").getContext("2d");
@@ -196,38 +203,9 @@
 			});
 		};
 
-		function logout() {
-			swal({
-			    title: "Are you sure?",
-			    text: "You will not be able to recover this imaginary file!",
-			    type: "warning",
-			    showCancelButton: true,
-			    confirmButtonColor: "#DD6B55",
-			    confirmButtonText: "Yes, delete it!",
-			    cancelButtonText: "No, cancel plx!",
-			    closeOnConfirm: false,
-			    closeOnCancel: false
-			  },
-			    function (isConfirm) {
-			      if (isConfirm) {
-			        $.ajax({
-			          type: "POST",
-			          url: "<?= base_url();?>login/logout",
-			          data: data,
-			          success: function (data) {
-			            swal("Logout!", "Your imaginary file has been deleted.", "success");
-			          },
-			          error: function (data) {
-			            swal("NOT Deleted!", "Something blew up.", "error");
-			          }
-			        });
-			      } else {
-			        
-			      }
-			    });
-
-			  return false;
-		}
+		$(document).ready(function() {
+		    $('#tableForm').DataTable();
+		});
 	</script>
 		
 </body>
