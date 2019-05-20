@@ -29,6 +29,7 @@ class ACLMaster extends CI_Controller {
 		$insert = $this->ACL_Model->SaveData("branch");
 		if ($insert) {
 			$id = $this->db->insert_id();
+			$message = "Data Successfully Saved";
 		}
 		$result = setResultInfo($insert,$message, $data);
 		echo json_encode($result);

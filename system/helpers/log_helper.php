@@ -24,7 +24,7 @@ if(! function_exists('helper_log'))
 if (! function_exists('setResultInfo')) {
 	function setResultInfo($status,$message, $data)
 	{
-		$result = (object) ['status' => $isError, 'message' => $message, 'data' => $data];
+		$result = (object) ['status' => $status, 'message' => $message, 'data' => $data];
 		return $result;
 	}
 }
