@@ -19,6 +19,10 @@
 		margin-bottom: 10px
 	}
 
+	input.width-ddl {
+		width: 100% !important;
+	} 
+
 </style>
 
 <!-- <div class="collapse-wrapper">
@@ -87,24 +91,20 @@
 	</div>
 </div>
 
-<div id="modalBranch" class="modal fade" role="dialog">
+<div id="modalBranch" class="modal fade" role="dialog" data-bind="with:aclMaster">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Branch</h4>
       </div>
-      <!-- Branch Id
-Branch Name
-Branch Location
-Branch Status -->
-      <div class="modal-body">
+      <div class="modal-body" data-bind="with:fBranch">
       	<div class="row">
       		<div class="col-sm-12 mgb-10">
 	        	<div class="form-group">
 				    <label class="control-label col-sm-4" for="brach_title">Branch Name</label>
 				    <div class="col-sm-8">
-				     	<input type="text" name="brach_title" class="form-control" placeholder="Description" id="brach_title">
+				     	<input type="text" name="Branch Name" class="form-control input-form" placeholder="Branch Name" required id="brach_title" data-bind="value: BRANCH_TITLE">
 				    </div>
 				</div>
 			</div>
@@ -112,7 +112,7 @@ Branch Status -->
 				<div class="form-group">
 				    <label class="control-label col-sm-4" for="brach_location">Branch Location</label>
 				    <div class="col-sm-8">
-				     	<input type="text" name="brach_location" class="form-control" placeholder="Description" id="brach_location">
+				     	<input type="text" name="Branch Location" class="form-control input-form" placeholder="Branch Location" required id="brach_location" data-bind="value: BRANCH_LOCATION">
 				    </div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@ Branch Status -->
 				<div class="form-group">
 				    <label class="control-label col-sm-4" for="enable_branch">Branch Status</label>
 				    <div class="col-sm-8">
-				     	<input type="text" name="enable_branch" class="form-control" placeholder="Description" id="enable_branch">
+				     	<input name="Branch Status" style="width:100%" class="form-control input-form" id="enable_branch" required data-bind="kendoDropDownList: { data: viewModel.ddlStatus, dataTextField : 'text', dataValueField : 'value' , value: ENABLE_BRANCH }">
 				    </div>
 				</div>
 			</div>
@@ -128,6 +128,7 @@ Branch Status -->
       	</div>
         
       <div class="modal-footer">
+			<button class="btn btn-success" data-bind="click: aclMaster.saveBranch">Sumbit</button>
         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
       </div>
     </div>

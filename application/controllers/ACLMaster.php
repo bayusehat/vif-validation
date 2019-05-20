@@ -19,13 +19,19 @@ class ACLMaster extends CI_Controller {
 	public function GetDataBranch()
 	{
 		$data = $this->ACL_Model->GetBranch();
-
-		// $res = array('data' =>$data);
-
 		echo json_encode($data);
-		// echo (object)[
-		// 	"data" => $dt
-		// ];
+	}
+
+	public function SaveBranch()
+	{
+		$message = "Cannot save data";
+		$data = null;
+		$insert = $this->ACL_Model->SaveData("branch");
+		if ($insert) {
+			$id = $this->db->insert_id();
+		}
+		$result = setResultInfo($insert,$message, $data);
+		echo json_encode($result);
 	}
 }
 

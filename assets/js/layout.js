@@ -1,22 +1,26 @@
 var viewModel = {
-	test : ko.observable("test")
+    test: ko.observable("test")
 }
+
+viewModel.ddlStatus = ko.observableArray([
+    { text: "ENABLED", value: 1 },
+    { text: "DISABLED", value: 0 },
+])
 
 viewModel.ajaxPost = function(url, data, fnOk, fnNok) {
     $.ajax({
         url: url,
         type: 'POST',
-        data: data, 
+        data: data,
         dataType: "JSON",
-        success: function (data) {
+        success: function(data) {
             if (typeof fnOk == "function") fnOk(data);
             koResult = "OK";
         },
-        error: function (error) {
+        error: function(error) {
             if (typeof fnNok == "function") {
                 fnNok(error);
-            }
-            else {
+            } else {
                 alert("There was an error posting the data to the server: " + error.responseText);
             }
         }
@@ -32,15 +36,14 @@ viewModel.ajaxFilePost = function(url, formData, fnOk, fnNok) {
         mimeType: 'multipart/form-data',
         processData: false,
         type: 'POST',
-        success: function (data) {
+        success: function(data) {
             if (typeof fnOk == "function") fnOk(data);
             koResult = "OK";
         },
-        error: function (error) {
+        error: function(error) {
             if (typeof fnNok == "function") {
                 fnNok(error);
-            }
-            else {
+            } else {
                 alert("There was an error posting the data to the server: " + error.responseText);
             }
         }
@@ -68,9 +71,9 @@ function swal_failed(msg) {
 }
 
 $(function() {
-	// console.log('test');
+    // console.log('test');
 })
 
 AppViewModel = function() {
-	return viewModel
+    return viewModel
 }
