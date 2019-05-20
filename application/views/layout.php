@@ -34,6 +34,13 @@
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
 	<!--===============================================================================================-->
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.mobile.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2019.2.514/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2019.2.514/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2019.2.514/js/kendo.all.min.js"></script>
 	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
 	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>
 	<script type="text/javascript">
@@ -46,8 +53,17 @@
 		.mb-3{
 			margin-bottom: 10px;
 		}
+		.mt-x{
+			margin-top: -12px;
+		}
 		.mt-3{
 			margin-top: 25px;
+		}
+		.mt-5{
+			margin-top: 50px;
+		}
+		.mt-7{
+			margin-top: 75px;
 		}
 		.right{
 			float: right;
@@ -58,6 +74,20 @@
 		.hr-line{
 			padding: 10px 0 5px 0px;
 			border-top: 1px solid lightgrey;
+		}
+		.fixed-bc{
+			position: fixed;
+			z-index: 10;
+			width: 100%;
+		}
+		.upload-wrap {
+		    position: relative;
+		}
+
+		.upload-btn {
+		    position: absolute;
+		    left: 0;
+		    opacity: 0;
 		}
 	</style>
 </head>
@@ -169,7 +199,7 @@
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
+		<div class="row fixed-bc">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
@@ -183,7 +213,7 @@
 				<h1 class="page-header"><?= $title;?></h1>
 			</div>
 		</div> --><!--/.row-->
-		<div class="row">
+		<div class="row mt-x">
 			<div class="col-lg-12 col-md-12 col-sm-12 mt-5">
 				<?php
 					$this->load->view($main_view);
@@ -198,8 +228,6 @@
 			</div>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
-	
-<<<<<<< HEAD
 <!--===============================================================================================-->	
 	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

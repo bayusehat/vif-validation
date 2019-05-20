@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Form_Model extends CI_Model {
 
+	public function getForm()
+	{
+		return $this->db->get('form')
+						->result();
+	}
+
 	public function add_form()
 	{
 		$subject = $this->input->post('subject');
@@ -39,18 +45,18 @@ class Form_Model extends CI_Model {
 				'CODE' => $code[$i],
 				'DESCRIPTON' => $description_detail[$i],
 				'AMOUNT' => $amount[$i],
-				'USE_DATE' => date('Y-m-d'),
-				'DETAIL_CREATED' => date('Y-m-d')
 			);
+
+			$total = array_sum($amount);
 		}
 
 		$this->db->insert_batch('detail', $form_detail);
+		$this->db->update('form',array('TOTAL_AMOUNT' => $total),array('FORM_ID'=>$id));
 
 		//helper_log($log_action="",$log_status="",$log_message="") TO USER HELPER LOG
-
 		if($this->db->affected_rows()>0){
 			helper_log('insert',true,'Send new form success '.$id);
-			return TRUE;
+			return $id;
 		}else{
 			helper_log('insert',false,'Send new form failed');
 			return FALSE;
