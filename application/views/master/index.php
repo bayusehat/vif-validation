@@ -44,7 +44,7 @@
 					<div class="tab-pane fade active in" id="tab1">
 						<div class="row">
 							<div class="col-md-12 mgb-10">
-								<button class="btn btn-sm btn-success pull-right">Add Branch</button>
+								<button class="btn btn-sm btn-success pull-right" onclick="aclMaster.addBranch()">Add Branch</button>
 							</div>
 							<div class="col-md-12">
 								<div class="custom-grid" id="gridBranch"></div>
@@ -89,18 +89,46 @@
 
 <div id="modalBranch" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Branch</h4>
       </div>
+      <!-- Branch Id
+Branch Name
+Branch Location
+Branch Status -->
       <div class="modal-body">
+      	<div class="row">
+      		<div class="col-sm-12 mgb-10">
+	        	<div class="form-group">
+				    <label class="control-label col-sm-4" for="brach_title">Branch Name</label>
+				    <div class="col-sm-8">
+				     	<input type="text" name="brach_title" class="form-control" placeholder="Description" id="brach_title">
+				    </div>
+				</div>
+			</div>
+			<div class="col-sm-12 mgb-10">
+				<div class="form-group">
+				    <label class="control-label col-sm-4" for="brach_location">Branch Location</label>
+				    <div class="col-sm-8">
+				     	<input type="text" name="brach_location" class="form-control" placeholder="Description" id="brach_location">
+				    </div>
+				</div>
+			</div>
+			<div class="col-sm-12 mgb-10">
+				<div class="form-group">
+				    <label class="control-label col-sm-4" for="enable_branch">Branch Status</label>
+				    <div class="col-sm-8">
+				     	<input type="text" name="enable_branch" class="form-control" placeholder="Description" id="enable_branch">
+				    </div>
+				</div>
+			</div>
+	      </div>
+      	</div>
         
-      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
       </div>
     </div>
 

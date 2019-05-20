@@ -44,6 +44,10 @@ aclMaster.generateBranch = function(jsonData) {
     })
 }
 
+aclMaster.addBranch = function() {
+	$("#modalBranch").modal("show")
+}
+
 $(function() {
 	aclMaster.getDataBranch()
 })
