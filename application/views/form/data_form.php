@@ -3,37 +3,86 @@
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<div class="row">
 				<div class="col-md-12">
-					<a href="<?= base_url();?>form/add_form" class="btn btn-success mb-3"><i class="fa fa-plus"></i> Add New Form</a>
+					<a href="<?= base_url();?>form/add_form" class="btn btn-success mb-3 right"><i class="fa fa-plus"></i> ADD NEW FORM</a>
 				</div>
 			</div>
 		<div class="hr-line"></div>
-			<table class="table table-bordered table-striped table-hover table-sm" id="tableForm" style="width:100%">
-				<thead>
-					<tr>
-						<th>No.</th>
-						<th>Date</th>
-						<th>Subject</th>
-						<th>Stage</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>1</td>
-						<td>13/11/1999</td>
-						<td>Payment</td>
-						<td>Accounting Branch</td>
-						<td>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Forward</a>
-							<a href="#" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Detail</a>
-							<a href="#" class="btn btn-warning btn-sm"><i class="fa fa-pencil"></i> Edit</a>
-							<a href="#" class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Reject</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div id="grid">
+				
+			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function getform(argument) {
+		viewModel.ajaxPost(base_url+"/form/getFormData",{},function(res) {
+			console.log(res);
+		});
+	}
+
+	var dataSource = new kendo.data.DataSource({
+		transport : {
+			read :{
+				url : base_url+"/form/getFormData",
+				type : "POST",
+				dataType : "json"
+			}
+		},
+		pageSize :10,
+		autoSync: true,
+         	schema: {
+             	model: {
+                 	id: "FORM_ID",
+                 	fields: {
+                     	TOTAL_AMOUNT: { type: "number", validation: { required: true, min: 1} }
+		            }
+		        }
+		    }
+	})
+
+	$("#grid").kendoGrid({	
+	 		toolbar: ["excel"],
+            excel: {
+                fileName: "Data form Export.xlsx",
+                filterable: true
+            },	
+			dataSource : dataSource,
+			height: 500,
+                groupable: true,
+                sortable: true,
+               	filterable: {
+                    mode: "row"
+                },
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                columns: [{
+                    field: "SUBJECT",
+                    title: "SUBJECT",
+                }, {
+                    field: "DESCRIPTION",
+                    title: "DESCRIPTION"
+                }, {
+                    field: "TOTAL_AMOUNT",
+                    title: "TOTAL AMOUNT",
+                    format: "{0:n}"
+                },{
+                	field: "STAGE",
+                	title: "STAGE"
+                },{
+                    template: "<div class='form-group'>"+
+                    "<a href='"+base_url+"form/detail/#: data.FORM_ID #' class='btn btn-info'><i class='fa fa-eye'></i> DETAIL</a>"+
+                    "<a href='"+base_url+"form/detail/#: data.FORM_ID #' class='btn btn-danger'><i class='fa fa-trash'></i> DELETE</a>"+
+                    "</div>",
+                    title: "ACTION",
+                    width: 240
+                }]
+		})
 	
+	$(function(){
+		getform()
+	});
+</script>
 

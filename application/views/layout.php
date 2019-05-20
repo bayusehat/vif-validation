@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?= $title; ?> - Validation App</title>
+	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/icon.png"/>
 	<link href="<?= base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
@@ -11,11 +12,8 @@
 	<link href="<?= base_url();?>assets/css/layout.css" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-	<!-- data table -->
-	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css"/> -->
+	
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-	<!--Custom Font-->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -42,6 +40,9 @@
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
 	<!--===============================================================================================-->
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.mobile.min.css" />
 	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
 	<!--===============================================================================================-->
 	<!-- KENDO JS -->
@@ -169,8 +170,10 @@
 		<ul class="nav menu">
 			<li><a href="<?= base_url();?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> Form Active</a></li>
-			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Form Send</a></li>
+			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Form Approved</a></li>
+			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Form Revision</a></li>
 			<li><a href="#"><em class="fa fa-window-close">&nbsp;</em> Form Rejected</a></li>
+
 			<li><a href="#"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
 			<!-- <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
@@ -192,7 +195,7 @@
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
+		<div class="row fixed-bc">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
@@ -206,7 +209,7 @@
 				<h1 class="page-header"><?= $title;?></h1>
 			</div>
 		</div> --><!--/.row-->
-		<div class="row">
+		<div class="row mt-x">
 			<div class="col-lg-12 col-md-12 col-sm-12 mt-5">
 				<?php
 					$this->load->view($main_view);

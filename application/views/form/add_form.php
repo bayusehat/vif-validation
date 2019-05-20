@@ -1,60 +1,57 @@
 <div class="panel panel-container pad-rl">
-	<form method="post" id="formApplication">
+	<form method="post" id="formApplication" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Subject</label>
-							<input type="text" name="subject" class="form-control" placeholder="Subject" id="">
+							<label>Subject <span class="color-red">*</span> </label>
+							<input type="text" name="subject" class="form-control" placeholder="Subject" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Description</label>
-							<input type="text" name="description" class="form-control" placeholder="Description" id="">
+							<label>Description <span class="color-red">*</span></label>
+							<input type="text" name="description" class="form-control" placeholder="Description" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Currency</label>
-							<input type="text" name="currency" class="form-control" placeholder="currency" id="">
+							<label>Currency <span class="color-red">*</span></label>
+							<input type="text" name="currency" class="form-control" placeholder="currency" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Amount in Word</label>
-							<input type="text" name="amount_in_word" class="form-control" placeholder="Amount in word" id="">
+							<label>Amount in Word <span class="color-red">*</span></label>
+							<input type="text" name="amount_in_word" class="form-control" placeholder="Amount in word" id="" required="">
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Bank</label>
-							<input type="text" name="bank" class="form-control" placeholder="Bank" id="">
+							<label>Bank <span class="color-red">*</span></label>
+							<input type="text" name="bank" class="form-control" placeholder="Bank" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Account</label>
-							<input type="text" name="account_number" class="form-control" placeholder="Account Number" id="">
+							<label>Account <span class="color-red">*</span></label>
+							<input type="text" name="account_number" class="form-control" placeholder="Account Number" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" name="account_name" class="form-control" placeholder="Account Name" id="">
+							<label>Name <span class="color-red">*</span></label>
+							<input type="text" name="account_name" class="form-control" placeholder="Account Name" id="" required="">
 						</div>
 					</div>
 				</div>
-			<hr>
+			<div class="hr-line"></div>
 				<div class="row">
 					<div class="col-md-12 col-sm-12">
-						<div class="form-group">
-							<h4>Detail Forms</h4>
-						</div>
-						<table class="table table-striped table-bordered table-sm" id="detailTable">
+						<table class="table table-striped table-hover table-sm" id="detailTable">
 							<thead>
 								<tr>
 									<th>Code</th>
@@ -74,10 +71,25 @@
 							</tbody>
 						</table>
 						<div class="form-group">
-							<a href="#" class="btn btn-secondary border btn-block btn-sm" id="addRowDetail"><i class="fa fa-plus"></i></a>
+							<a href="#" class="btn btn-primary btn-block btn-sm" id="addRowDetail"><i class="fa fa-plus"></i></a>
 						</div>
 					</div>
 				</div>
+			<div class="hr-line"></div>
+				<div class="row">
+					<div class="col-md-6 col-sm-12">
+						<div class="form-group">
+							<label>Attachment <span class="color-red">*</span></label>
+							<input type="file" name="attachment[]" class="form-control" multiple="">
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<div class="mt-3">
+							<span class="color-red">*You can add attachment more than one</span>
+						</div>
+					</div>
+				</div>
+			<div class="hr-line"></div>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<!-- <div class="form-group">
@@ -92,7 +104,7 @@
 						</div> -->
 					</div>
 					<div class="col-md-6 col-sm-12">
-						<button type="submit" class="btn btn-success btn-block mt-3 right" id="btnSendForm"><i class="fa fa-paper-plane"></i> Send Form</button>
+						<button type="submit" class="btn btn-success btn-block right" id="btnSendForm"><i class="fa fa-paper-plane"></i> Send Form</button>
 					</div>
 				</div>
 			</div>
@@ -119,14 +131,18 @@
 		   $(this).closest("tr").remove(); 
 		});
 	});
-
+ 	// var validator = $("#formApplication").kendoValidator().data("kendoValidator");
 	$("#btnSendForm").click(function(event) {
 		event.preventDefault();
-		var formData = $('form#formApplication').serialize();
-		viewModel.ajaxPost(base_url+"form/add_form_run",formData,function(res){
-			swal_success('Form berhasil terkirim');
-			$('form#formApplication').trigger('reset');
+		var form = $("#formApplication").closest("form");
+		var formData = new FormData(form[0]);
+			viewModel.ajaxFilePost(base_url+"form/add_form_run",formData,function(res){
+				swal_success(res.msg);
+				$('form#formApplication').trigger('reset');
+				setTimeout(function(){
+					window.location = base_url+"form";
+				},1000);
+			});
 		});
-	});
-	
+		
 </script>

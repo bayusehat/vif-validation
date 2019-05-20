@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 			$data['main_view'] = 'dashboard';
 			$this->load->view('layout', $data);
 		}else{
-			$this->load->view('login');
+			$this->load->view('logins');
 		}
 	}
 
