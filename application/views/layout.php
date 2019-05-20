@@ -4,17 +4,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?= $title; ?> - Validation App</title>
+	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/icon.png"/>
 	<link href="<?= base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-	<!-- data table -->
-	<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css"/> -->
+	
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-	<!--Custom Font-->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> -->
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -44,10 +42,6 @@
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.common-material.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.mobile.min.css" />
-
-    <script src="https://kendo.cdn.telerik.com/2019.2.514/js/jquery.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2019.2.514/js/jszip.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2019.2.514/js/kendo.all.min.js"></script>
 	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
 	<!--===============================================================================================-->
 	<!-- KENDO JS -->

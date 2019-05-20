@@ -4,7 +4,7 @@
 	<title>Validation App - Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/icon.png"/>
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/login/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -28,10 +28,9 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-43">
-						Validation App
-					</span>
-					
+					<div class="form-group">
+						<center><img src="<?= base_url();?>assets/images/vif.png"></center>
+					</div>
 					<div class="form-group">
 						<label>Email</label>
 						<input class="form-control" type="text" name="email" id="email">
