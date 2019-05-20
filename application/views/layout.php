@@ -62,8 +62,6 @@
 	<script type="text/javascript">
 		var base_url = "<?= base_url();?>";
 	</script>
-<<<<<<< HEAD
-=======
 	<style type="text/css">
 		.pad-rl{
 			padding: 15px;
@@ -89,7 +87,6 @@
 		    max-height:400px;
 		}
 	</style>
->>>>>>> origin/master
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">

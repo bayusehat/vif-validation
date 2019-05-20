@@ -35,8 +35,8 @@ class Form extends CI_Controller {
 	public function add_form_run()
 	{
 		$this->islogged();
-		if($this->Form_Model->add_form()){
-			$form_id = $this->Form_Model->add_form();
+		$form_id = $this->Form_Model->add_form();
+		if($form_id){
 			if(!empty($_FILES['attachment']['name'])){
 				$num = sizeof($_FILES['attachment']['tmp_name']);
 				$files = $_FILES['attachment'];
