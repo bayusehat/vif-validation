@@ -3,7 +3,7 @@
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<div class="row">
 				<div class="col-md-12">
-					<a href="<?= base_url();?>form/add_form" class="btn btn-success mb-3 right"><i class="fa fa-plus"></i> Add New Form</a>
+					<a href="<?= base_url();?>form/add_form" class="btn btn-success mb-3 right"><i class="fa fa-plus"></i> ADD NEW FORM</a>
 				</div>
 			</div>
 		<div class="hr-line"></div>

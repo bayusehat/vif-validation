@@ -46,50 +46,6 @@
 	<script type="text/javascript">
 		var base_url = "<?= base_url();?>";
 	</script>
-	<style type="text/css">
-		.pad-rl{
-			padding: 15px;
-		}
-		.mb-3{
-			margin-bottom: 10px;
-		}
-		.mt-x{
-			margin-top: -12px;
-		}
-		.mt-3{
-			margin-top: 25px;
-		}
-		.mt-5{
-			margin-top: 50px;
-		}
-		.mt-7{
-			margin-top: 75px;
-		}
-		.right{
-			float: right;
-		}
-		.border{
-			border: 0.5px solid lightblue;
-		}
-		.hr-line{
-			padding: 10px 0 5px 0px;
-			border-top: 1px solid lightgrey;
-		}
-		.fixed-bc{
-			position: fixed;
-			z-index: 10;
-			width: 100%;
-		}
-		.upload-wrap {
-		    position: relative;
-		}
-
-		.upload-btn {
-		    position: absolute;
-		    left: 0;
-		    opacity: 0;
-		}
-	</style>
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -176,8 +132,10 @@
 		<ul class="nav menu">
 			<li><a href="<?= base_url();?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> Form Active</a></li>
-			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Form Send</a></li>
+			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Form Approved</a></li>
+			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Form Revision</a></li>
 			<li><a href="#"><em class="fa fa-window-close">&nbsp;</em> Form Rejected</a></li>
+
 			<li><a href="#"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
 			<!-- <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
