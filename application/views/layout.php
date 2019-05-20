@@ -20,9 +20,16 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<!--===============================================================================================-->
+	<!-- KENDO CSS -->
+	<link href="<?= base_url();?>assets/vendor/kendo/styles/kendo.common.min.css" rel="stylesheet"/>
+	<link href="<?= base_url();?>assets/vendor/kendo/styles/kendo.default.min.css" rel="stylesheet"/>
+	<link href="<?= base_url();?>assets/vendor/kendo/styles/kendo.default.mobile.min.css" rel="stylesheet"/>
+	<link href="<?= base_url();?>assets/vendor/kendo/styles/kendo.rtl.min.css" rel="stylesheet"/>
+	<!--===============================================================================================-->
 
 	<!--===============================================================================================-->	
-	<script src="<?= base_url();?>assets/js/jquery-1.11.1.min.js"></script>
+	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
@@ -42,10 +49,47 @@
     <script src="https://kendo.cdn.telerik.com/2019.2.514/js/jszip.min.js"></script>
     <script src="https://kendo.cdn.telerik.com/2019.2.514/js/kendo.all.min.js"></script>
 	<script type='text/javascript' src="<?= base_url();?>assets/js/knockout-3.5.0.js"></script>
+	<!--===============================================================================================-->
+	<!-- KENDO JS -->
+	<!-- <script src="<?= base_url();?>assets/vendor/kendo/js/jquery.min.js"></script> -->
+	<script src="<?= base_url();?>assets/vendor/kendo/js/jszip.min.js"></script>
+	<script src="<?= base_url();?>assets/vendor/kendo/js/kendo.all.min.js"></script>
+	<!--===============================================================================================-->
+	
+
+
 	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>
 	<script type="text/javascript">
 		var base_url = "<?= base_url();?>";
 	</script>
+<<<<<<< HEAD
+=======
+	<style type="text/css">
+		.pad-rl{
+			padding: 15px;
+		}
+		.mb-3{
+			margin-bottom: 10px;
+		}
+		.mt-3{
+			margin-top: 25px;
+		}
+		.right{
+			float: right;
+		}
+		.border{
+			border: 0.5px solid lightblue;
+		}
+		.hr-line{
+			padding: 10px 0 5px 0px;
+			border-top: 1px solid lightgrey;
+		}
+
+		.custom-grid .k-grid-content, .custom-grid .k-grid-content-locked {
+		    max-height:400px;
+		}
+	</style>
+>>>>>>> origin/master
 </head>
 <body>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -187,17 +231,17 @@
 		</div><!--/.row-->
 	</div>	<!--/.main-->
 <!--===============================================================================================-->	
-	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!-- <script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script> -->
 <!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script> -->
+	<!-- <script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script> -->
 <!--===============================================================================================-->
-	<script src="<?= base_url();?>assets/js/chart.min.js"></script>
+	<!-- <script src="<?= base_url();?>assets/js/chart.min.js"></script>
 	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
 	<script src="<?= base_url();?>assets/js/easypiechart.js"></script>
 	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
-	<script src="<?= base_url();?>assets/js/custom.js"></script>
+	<script src="<?= base_url();?>assets/js/custom.js"></script> -->
 	<script src="<?= base_url();?>assets/js/sweetalert/sweetalert2@7.js"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
