@@ -39,6 +39,7 @@
 	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
+	<script src="<?= base_url();?>assets/js/lodash.min.js"></script>
 	<!--===============================================================================================-->
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.common-material.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.min.css" />

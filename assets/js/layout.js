@@ -70,6 +70,30 @@ function swal_failed(msg) {
     });
 }
 
+function swal_confirm_delete(callback) {
+    swal({
+      title: "Are you sure?",
+      text: "Your will not be able to recover this data!",
+      type: "warning",
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: "Yes, delete it!",
+      reverseButtons: true,
+      // customClass: {
+      //       confirmButton: 'btn btn-success',
+      //       cancelButton: 'btn btn-danger'
+      //   },
+        // cancelButtontonsStyling: false,
+      // closeOnConfirm: false
+    }).then(function(res) {
+        if (res.value) {
+            callback()
+        }
+    });
+}
+
 $(function() {
     // console.log('test');
 })
