@@ -33,12 +33,12 @@
 					</div>
 					<div class="form-group">
 						<label>Email</label>
-						<input class="form-control" type="text" name="email" id="email">
+						<input class="form-control" type="text" name="email" id="email" placeholder="E-mail">
 					</div>
 					
 					<div class="form-group">
 						<label>Password</label>
-						<input class="form-control" type="password" name="password" id="password">
+						<input class="form-control" type="password" name="password" id="password" placeholder="******">
 					</div>
 					<div class="form-group">
 						<div class="container-login100-form-btn">

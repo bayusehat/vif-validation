@@ -73,11 +73,9 @@
                 	title: "STAGE"
                 },{
                     template: "<div class='form-group'>"+
-                    "<a href='"+base_url+"form/detail/#: data.FORM_ID #' class='btn btn-info'><i class='fa fa-eye'></i> DETAIL</a>"+
-                    "<a href='"+base_url+"form/detail/#: data.FORM_ID #' class='btn btn-danger'><i class='fa fa-trash'></i> DELETE</a>"+
+                    "<a href='"+base_url+"form/detail/#: data.FORM_ID #' class='btn btn-info'><i class='fa fa-pencil'></i></a>"+
                     "</div>",
                     title: "ACTION",
-                    width: 240
                 }]
 		})
 	

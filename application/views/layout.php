@@ -248,9 +248,23 @@
 		// 	});
 		// };
 
-		$(document).ready(function() {
-		    $('#tableForm').DataTable();
-		});
+		function logout() {
+			swal({
+			    title: "Are you sure?",
+			    text: "You will not be able to recover this imaginary file!",
+			    type: "warning",
+			    showCancelButton: true,
+			    confirmButtonColor: '#DD6B55',
+			    confirmButtonText: 'Yes, I am sure!',
+			    cancelButtonText: "No, cancel it!",
+			    closeOnConfirm: false,
+			    closeOnCancel: false
+			 }).then((res) => {
+			 	viewModel.ajakPost(base_url+"login/logout",{},function(res){
+				window.location = base_url;
+			 })
+			
+		}
 
 		ko.applyBindings(new AppViewModel());
 	</script>
