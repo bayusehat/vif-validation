@@ -9,6 +9,7 @@
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/css/layout.css" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 	
@@ -38,6 +39,7 @@
 	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
+	<script src="<?= base_url();?>assets/js/lodash.min.js"></script>
 	<!--===============================================================================================-->
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.common-material.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2019.2.514/styles/kendo.material.min.css" />
@@ -49,7 +51,9 @@
 	<script src="<?= base_url();?>assets/vendor/kendo/js/jszip.min.js"></script>
 	<script src="<?= base_url();?>assets/vendor/kendo/js/kendo.all.min.js"></script>
 	<!--===============================================================================================-->
-	
+	<script src="<?= base_url();?>assets/js/knockout.mapping-latest.js"></script>
+	<script src="<?= base_url();?>assets/js/knockout-kendo.min.js"></script>
+	<!--===============================================================================================-->
 
 
 	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>

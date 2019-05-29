@@ -1,0 +1,18 @@
+/* input.form-control.form-width-ddl {
+    width: 100%;
+} */
+
+.custom-grid.k-grid .k-grid-content>table tbody tr td {
+	padding: 3px 19px;
+	border-left: 1px solid #e6e6e6;
+}
+.custom-grid.k-grid .k-grid-content>table tbody tr td:first-child {
+	border-left: none;
+}
+.k-grid .k-grid-content>table tbody tr td .btn-action{
+	width: 36px;
+    margin: 0 3px;
+}
+button.swal2-styled{
+	width: 170px;
+}
