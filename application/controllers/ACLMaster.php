@@ -24,28 +24,48 @@ class ACLMaster extends CI_Controller {
 
 	public function SaveBranch()
 	{
-		$message = "Cannot save data";
 		$data = null;
 		$insert = $this->ACL_Model->SaveData("branch","ID_BRANCH");
-		if ($insert) {
-			$id = $this->db->insert_id();
-			$message = "Data Successfully Saved";
-		}
-		$result = setResultInfo($insert,$message, $data);
+		// if ($insert->status) {
+		// 	$message = "Data Successfully Saved";
+		// }
+		$result = setResultInfo($insert->status,$insert->message, $data);
 		echo json_encode($result);
 	}
 
 	public function DeleteBranch()
 	{
-		$message = "Delete Failed";
 		$data = null;
 		$id = $this->input->post("ID_BRANCH");
 
+		$this->ACL_Model->UpdateAssosiationTable("ID_BRANCH", $id, "groups_branch", array());
 		$delete = $this->ACL_Model->DeleteData("branch","ID_BRANCH", $id);
-		if ($delete) {
-			$message = "Data branch with id ".$id." Deleted";
-		}
-		$result = setResultInfo($delete,$message, $data);
+		$result = setResultInfo($delete->status,$delete->message, $data);
+		echo json_encode($result);
+	}
+
+	public function GetDataGroups()
+	{
+		$data = $this->ACL_Model->GetGroups();
+		echo json_encode($data);
+	}
+
+	public function SaveGroups()
+	{
+		$data = null;
+		$insert = $this->ACL_Model->SaveGroup();
+		$result = setResultInfo($insert->status,$insert->message, $data);
+		echo json_encode($result);
+	}
+
+	public function DeleteGroups()
+	{
+		$data = null;
+		$id = $this->input->post("GROUP_ID");
+
+		$this->ACL_Model->UpdateAssosiationTable("GROUP_ID", $id, "groups_branch", array());
+		$delete = $this->ACL_Model->DeleteData("groups","GROUP_ID", $id);
+		$result = setResultInfo($delete->status,$delete->message, $data);
 		echo json_encode($result);
 	}
 }

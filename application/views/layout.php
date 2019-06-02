@@ -265,9 +265,9 @@
 			    closeOnCancel: false
 			 }).then((res) => {
 			 	viewModel.ajakPost(base_url+"login/logout",{},function(res){
-				window.location = base_url;
-			 })
-			
+					window.location = base_url;
+				})
+			})
 		}
 
 		ko.applyBindings(new AppViewModel());

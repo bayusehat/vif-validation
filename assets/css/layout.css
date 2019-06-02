@@ -13,6 +13,13 @@
 	width: 36px;
     margin: 0 3px;
 }
+
+.k-grid table tbody tr td span.tmp-title{
+	background-color: greenyellow;
+    padding: 2px;
+    border-radius: 7px;
+}
+
 button.swal2-styled{
 	width: 170px;
 }

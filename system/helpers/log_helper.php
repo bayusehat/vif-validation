@@ -28,4 +28,12 @@ if (! function_exists('setResultInfo')) {
 		return $result;
 	}
 }
+
+if (! function_exists('setResultInfoDb')) {
+	function setResultInfoDb($status,$message, $id)
+	{
+		$result = (object) ['status' => $status, 'message' => $message, 'id' => $id];
+		return $result;
+	}
+}
 ?>
