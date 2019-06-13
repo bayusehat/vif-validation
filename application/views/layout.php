@@ -11,6 +11,8 @@
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/layout.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/jquery-ui.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/js/fileuploader/src/jquery.fileuploader.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/css/jquery.fileuploader-theme-thumbnails.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -29,6 +31,7 @@
 	<script src="<?= base_url();?>assets/js/jquery-1.9.1.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery-ui.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery.price_format.min.js"></script>
+	<script src="<?= base_url();?>assets/js/fileuploader/src/jquery.fileuploader.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
@@ -170,10 +173,10 @@
 		</form> -->
 		<ul class="nav menu">
 			<li><a href="<?= base_url();?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> Form Active</a></li>
-			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Form Approved</a></li>
-			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Form Revision</a></li>
-			<li><a href="#"><em class="fa fa-window-close">&nbsp;</em> Form Rejected</a></li>
+			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> All Forms</a></li>
+			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Verified Forms</a></li>
+			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Revision Forms</a></li>
+			<li><a href="#"><em class="fa fa-window-close">&nbsp;</em> Rejected Forms</a></li>
 
 			<li><a href="#"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
 			<!-- <li class="parent "><a data-toggle="collapse" href="#sub-item-1">

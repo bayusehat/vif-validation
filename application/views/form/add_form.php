@@ -117,7 +117,7 @@
 					<div class="col-md-12 col-sm-12">
 						<div class="form-group">
 							<label>Attachment <span class="color-red">*</span></label>
-							<input type="file" name="attachment[]" class="form-control" multiple="">
+							<input type="file" name="files" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -145,6 +145,13 @@
 </div>
 <script type="text/javascript">
 	$(".dates").datepicker({dateFormat: 'yy-mm-dd'});
+	$('input[name="files"]').fileuploader({
+            addMore: true,
+            extensions: ['jpg', 'jpeg', 'png', 'xls', 'xlsx', 'doc', 'docx', 'ppt', 'pptx', 'pdf', 'txt'],
+            fileMaxSize: 1,
+            limit: 25,
+            theme: 'default'
+        });
 	function total(){
 		var sum = 0;
         $(".amount").each(function() {

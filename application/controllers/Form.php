@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+include(APPPATH.'libraries/Fileuploader.php');
+
 class Form extends CI_Controller {
 
 	public function __construct()
@@ -38,39 +40,31 @@ class Form extends CI_Controller {
 		$this->islogged();
 		$form_id = $this->Form_Model->add_form();
 		if($form_id){
-			if(!empty($_FILES['attachment']['name'])){
-				$num = sizeof($_FILES['attachment']['tmp_name']);
-				$files = $_FILES['attachment'];
-
-				for($i=0;$i<$num;$i++){ 
-					if($_FILES['attachment']['error'][$i] != 0){
-						$this->form_validation->set_message('img_produk','Gagal');
-						return false;
+			$FileUploader = new FileUploader('files', array());
+			$upload = $FileUploader->upload();
+			$files = $upload['files'];
+			$fileupload = [];
+			if($files != 'null' || $files != '') {
+				if($upload['isSuccess']) {
+					foreach ($files as $file => $value) {
+						array_push($fileupload, $value['file']);
 					}
 				}
+				if($upload['hasWarnings']) {
+					$warnings = $upload['warnings'];
+					echo "<script>alert(".$warnings.");</script>";
+				};
+			};
 
-				$config['upload_path'] = './assets/uploads/files/';
-				$config['allowed_types'] = 'gif|jpg|png|pdf';
-
-				for($i=0;$i<$num;$i++){ 
-					$_FILES['attachment']['name'] = $files['name'][$i];
-					$_FILES['attachment']['type'] = $files['type'][$i];
-					$_FILES['attachment']['tmp_name'] = $files['tmp_name'][$i];
-					$_FILES['attachment']['error'] = $files['error'][$i];
-					$_FILES['attachment']['size'] = $files['size'][$i];
-
-						
-					$this->upload->initialize($config);
-
-					if($this->upload->do_upload('attachment')){
-						$data = $this->upload->data();
-
-						$insert[$i]['FILE_NAME'] = $data['file_name'];
-					}
-					$insert[$i]['FORM_ID'] = $form_id;
+			if (count($fileupload) > 0) {
+					foreach ($fileupload as $file) {
+						$insertFile = $this->db->insert('attachment', array(
+							'FORM_ID' => $form_id,
+							'FILE_NAME' => $file
+					));
 				}
-			$this->db->insert_batch('attachment', $insert,array('FORM_ID' => $form_id));
 			}
+
 			$data = array(
 				'msg' => 'Form sent',
 				'valid' => true 
