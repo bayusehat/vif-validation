@@ -179,7 +179,6 @@
 				html += '<select class="form-control code" name="code[]">';
 				for(i=0;i<data.length;i++){
 					html += '<option value="'+data[i].CODE_ID+'">'+data[i].NAME+' - '+data[i].DESCRIPTION+'</option>';
-					
 				}
 				html += '</select>';
 				row = '<tr>'+
@@ -205,6 +204,7 @@
 					'</tr>';
 				$(row).insertBefore("#last");
 				total();
+				$(document).find('#currency').trigger('change');
 				i++;
 				$('.code').focus();
 				$(".dates").datepicker({dateFormat: 'yy-mm-dd'});
