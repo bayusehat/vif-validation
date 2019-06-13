@@ -28,6 +28,7 @@
 	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery-1.9.1.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery-ui.js"></script>
+	<script src="<?= base_url();?>assets/js/jquery.price_format.min.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>

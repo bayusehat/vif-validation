@@ -39,7 +39,8 @@ class Form_Model extends CI_Model {
 		$description_detail = $this->input->post('description_detail');
 		$duedate = $this->input->post('duedate');
 		$amount = $this->input->post('amount');
-
+		$amount = str_replace(",","", $amount);
+		
 		foreach ($code as $i => $item) {
 			$form_detail[] = array(
 				'FORM_ID' => $id,

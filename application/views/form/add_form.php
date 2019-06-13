@@ -149,11 +149,18 @@
 		var sum = 0;
         $(".amount").each(function() {
           var value = $(this).val();
-            if(!isNaN(value) && value.length != 0) {
-                  sum += parseFloat(value);
+          var i = value.replace(/,/g, '')
+            if(!isNaN(i) && i.length != 0) {
+                  sum += parseFloat(i);
                 }
             });
         $("#total").text(sum);
+        $('#total').priceFormat({
+	        prefix: '',
+	        limit: 12,
+	        centsLimit: 0,
+	        thousandsSeparator: ','
+	    });
 	}
 
 	function amountChange() {
@@ -205,7 +212,13 @@
 				$(row).insertBefore("#last");
 				total();
 				$(document).find('#currency').trigger('change');
-				i++;
+				$('.amount, #amount').priceFormat({
+			        prefix: '',
+			        limit: 12,
+			        centsLimit: 0,
+			        thousandsSeparator: ','
+			    });
+
 				$('.code').focus();
 				$(".dates").datepicker({dateFormat: 'yy-mm-dd'});
 				// $('body, html').animate({ scrollTop: $("#amountDetail").offset().top }, 1000);
@@ -216,6 +229,14 @@
 		   $(this).closest("tr").remove(); 
 		});
 	});
+
+	$('.amount, #total').priceFormat({
+        prefix: '',
+        limit: 12,
+        centsLimit: 0,
+        thousandsSeparator: ','
+    });
+
  	// var validator = $("#formApplication").kendoValidator().data("kendoValidator");
 	$("#btnSendForm").click(function(event) {
 		event.preventDefault();
