@@ -9,8 +9,15 @@ class ACLMaster extends CI_Controller {
 		$this->load->model('ACL_Model');
 	}
 
+	public function isLogged($value='')
+	{
+		if($this->session->userdata('login') == FALSE)
+		redirect('/','refresh');
+	}
+
 	public function index()
 	{
+		$this->isLogged();
 		$data["title"] = "Acl Master";
 		$data['main_view'] = 'master/index';
 		$this->load->view('layout', $data);
@@ -18,12 +25,14 @@ class ACLMaster extends CI_Controller {
 
 	public function GetDataBranch()
 	{
+		$this->isLogged();
 		$data = $this->ACL_Model->GetBranch();
 		echo json_encode($data);
 	}
 
 	public function SaveBranch()
 	{
+		$this->isLogged();
 		$data = null;
 		$insert = $this->ACL_Model->SaveData("branch","ID_BRANCH", null);
 		// if ($insert->status) {
@@ -35,6 +44,7 @@ class ACLMaster extends CI_Controller {
 
 	public function DeleteBranch()
 	{
+		$this->isLogged();
 		$data = null;
 		$id = $this->input->post("ID_BRANCH");
 
@@ -46,12 +56,14 @@ class ACLMaster extends CI_Controller {
 
 	public function GetDataGroups()
 	{
+		$this->isLogged();
 		$data = $this->ACL_Model->GetGroups();
 		echo json_encode($data);
 	}
 
 	public function SaveGroups()
 	{
+		$this->isLogged();
 		$data = null;
 		$insert = $this->ACL_Model->SaveGroup();
 		$result = setResultInfo($insert->status,$insert->message, $data);
@@ -60,6 +72,7 @@ class ACLMaster extends CI_Controller {
 
 	public function DeleteGroups()
 	{
+		$this->isLogged();
 		$data = null;
 		$id = $this->input->post("GROUP_ID");
 
@@ -71,6 +84,7 @@ class ACLMaster extends CI_Controller {
 
 	public function SaveAccess()
 	{
+		$this->isLogged();
 		$data = $this->input->post('data');
 		$data["PARENT_ID"] = ($data["PARENT_ID"]) ? $data["PARENT_ID"] : NULL ;
 		$insert = $this->ACL_Model->SaveData("access","ACCESS_ID",$data);
@@ -80,12 +94,14 @@ class ACLMaster extends CI_Controller {
 	
 	public function GetDataAccess()
 	{
+		$this->isLogged();
 		$data = $this->ACL_Model->GetAccess();
 		echo json_encode($data);
 	}
 
 	public function DeleteAccess()
 	{
+		$this->isLogged();
 		$data = null;
 		$id = $this->input->post("ACCESS_ID");
 
@@ -97,6 +113,7 @@ class ACLMaster extends CI_Controller {
 
 	public function GetDataManageAccess()
 	{
+		$this->isLogged();
 		$group_id = $this->input->post("GROUP_ID");
 		$data = $this->ACL_Model->GetJoinAccessGroups($group_id);
 		echo json_encode($data);
