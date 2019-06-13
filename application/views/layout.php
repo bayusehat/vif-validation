@@ -7,13 +7,10 @@
 	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/icon.png"/>
 	<link href="<?= base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet">
+	<!-- <link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet"> -->
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/layout.css" rel="stylesheet">
-
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-	
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+	<link href="<?= base_url();?>assets/css/jquery-ui.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -29,6 +26,8 @@
 
 	<!--===============================================================================================-->	
 	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="<?= base_url();?>assets/js/jquery-1.9.1.min.js"></script>
+	<script src="<?= base_url();?>assets/js/jquery-ui.js"></script>
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
@@ -37,7 +36,7 @@
 	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
 	<script src="<?= base_url();?>assets/js/easypiechart.js"></script>
 	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
-	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
+	<!-- <script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script> -->
 	<script src="<?= base_url();?>assets/js/custom.js"></script>
 	<script src="<?= base_url();?>assets/js/lodash.min.js"></script>
 	<!--===============================================================================================-->

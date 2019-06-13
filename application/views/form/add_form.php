@@ -18,7 +18,10 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label>Currency <span class="color-red">*</span></label>
-							<input type="text" name="currency" class="form-control" placeholder="currency" id="" required="">
+							<select name="currency" class="form-control" id="currency">
+								<option value="1">IDR</option>
+								<option value="2">USD</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -51,41 +54,70 @@
 			<div class="hr-line"></div>
 				<div class="row">
 					<div class="col-md-12 col-sm-12">
-						<table class="table table-striped table-hover table-sm" id="detailTable">
+						<table class="table table-striped table-hover table-sm table-bordered" id="detailTable">
 							<thead>
 								<tr>
 									<th>Code</th>
 									<th>Description</th>
+									<th>Duedate</th>
 									<th>Amount</th>
 									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody id="amountDetail">
 								<tr>
-									<td><input type="text" name="code[0]" placeholder="Code" class="form-control code"></td>
-									<td><input type="text" name="description_detail[0]" placeholder="Description" class="form-control"></td>
-									<td><input type="text" name="amount[0]" placeholder="Amount" class="form-control"></td>
+									<td>
+										<select class="form-control code" name="code[0]">
+											<?php
+												foreach ($datacode as $data) { ?>
+												    <option value="<?= $data->CODE_ID;?>"><?= $data->NAME.' - '.$data->DESCRIPTION;?></option>
+											<?php } ?>
+										</select>
+									</td>
+									<td><input type="text" name="description_detail[]" placeholder="Description" class="form-control"></td>
+									<td>
+										<div class="input-group">
+											<span class="input-group-btn">
+                                                <a class="btn btn-default" type="button"><i class="fa fa-calendar"></i></a>
+                                            </span>
+											<input type="text" name="duedate[]" placeholder="duedate" class="form-control dates">
+										</div>
+									</td>
+									<td>
+										<div class="input-group">
+											<span class="input-group-btn">
+                                                <a class="btn btn-default currency" type="button">Rp</a>
+                                            </span>
+											<input type="text" name="amount[]" placeholder="0" class="form-control amount" onkeyup="amountChange()">
+										</div>
+									</td>
 									<td><button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash"></i></button></td>
 								</tr>
-								<tr id="last"></tr>
+								<tr id="last">
+									<td colspan="5">
+										<div class="form-group">
+											<a href="#" class="btn btn-secondary btn-block btn-sm" id="addRowDetail"><i class="fa fa-plus"></i></a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<label class="right"><h2>TOTAL</h2></label>
+									</td>
+									<td colspan="2">
+										<h2><span class="currency">Rp </span><span id="total">0</span></h2>
+									</td>
+								</tr>
 							</tbody>
 						</table>
-						<div class="form-group">
-							<a href="#" class="btn btn-primary btn-block btn-sm" id="addRowDetail"><i class="fa fa-plus"></i></a>
-						</div>
 					</div>
 				</div>
 			<div class="hr-line"></div>
 				<div class="row">
-					<div class="col-md-6 col-sm-12">
+					<div class="col-md-12 col-sm-12">
 						<div class="form-group">
 							<label>Attachment <span class="color-red">*</span></label>
 							<input type="file" name="attachment[]" class="form-control" multiple="">
-						</div>
-					</div>
-					<div class="col-md-6 col-sm-12">
-						<div class="mt-3">
-							<span class="color-red">*You can add attachment more than one</span>
 						</div>
 					</div>
 				</div>
@@ -112,19 +144,72 @@
 	</form>
 </div>
 <script type="text/javascript">
-	var i = 1;
+	$(".dates").datepicker({dateFormat: 'yy-mm-dd'});
+	function total(){
+		var sum = 0;
+        $(".amount").each(function() {
+          var value = $(this).val();
+            if(!isNaN(value) && value.length != 0) {
+                  sum += parseFloat(value);
+                }
+            });
+        $("#total").text(sum);
+	}
+
+	function amountChange() {
+		total();
+		$(".amount").keyup(function(){
+			total()
+		});
+	}
+
+	$("#currency").change(function(){
+		var val = $(this).val();
+		if(val == '1'){
+			$('.currency').text('Rp ');
+		}else{
+			$('.currency').text('$ ');
+		}
+	});
+
 	$(function(){
 		$("#addRowDetail").click(function(){
-			row = '<tr>'+
-						'<td><input type="text" name="code['+i+']" placeholder="Code" class="form-control code"></td>'+
-						'<td><input type="text" name="description_detail['+i+']" placeholder="Description" class="form-control"></td>'+
-						'<td><input type="text" name="amount['+i+']" placeholder="Amount" class="form-control"></td>'+
+			$.getJSON('<?php echo base_url();?>form/getCodeData',function(data){
+				html = '';
+				html += '<select class="form-control code" name="code[]">';
+				for(i=0;i<data.length;i++){
+					html += '<option value="'+data[i].CODE_ID+'">'+data[i].NAME+' - '+data[i].DESCRIPTION+'</option>';
+					
+				}
+				html += '</select>';
+				row = '<tr>'+
+						'<td>'+html+'</td>'+
+						'<td><input type="text" name="description_detail[]" placeholder="Description" class="form-control"></td>'+
+						'<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-btn">'+
+                                    '<a class="btn btn-default" type="button"><i class="fa fa-calendar"></i></a>'+
+                                '</span>'+
+								'<input type="text" name="duedate[]" placeholder="duedate" class="form-control dates">'+
+							'</div>'+
+						'</td>'+
+						'<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-btn">'+
+                                    '<a class="btn btn-default currency" type="button">Rp</a>'+
+                                '</span>'+
+								'<input type="text" name="amount[]" placeholder="0" class="form-control amount" onkeyup="amountChange()">'+
+							'</div>'+
+						'</td>'+
 						'<td><button type="button" class="btn btn-danger btn-sm btn-block del"><i class="fa fa-trash"></i></button></td>'+
 					'</tr>';
-			$(row).insertBefore("#last");
-			i++;
-			$('.code').focus();
-			$('body, html').animate({ scrollTop: $("#amountDetail").offset().top }, 1000);
+				$(row).insertBefore("#last");
+				total();
+				i++;
+				$('.code').focus();
+				$(".dates").datepicker({dateFormat: 'yy-mm-dd'});
+				// $('body, html').animate({ scrollTop: $("#amountDetail").offset().top }, 1000);
+			})
 		});
 
 		$("#detailTable").delegate("button", "click", function() {
@@ -144,5 +229,4 @@
 				},1000);
 			});
 		});
-		
 </script>

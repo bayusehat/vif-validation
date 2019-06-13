@@ -6,7 +6,7 @@ class Form extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-			$this->load->model(array('Form_Model'));
+			$this->load->model(array('Form_Model','M_main'));
 	}
 
 	public function islogged()
@@ -27,7 +27,8 @@ class Form extends CI_Controller {
 	public function add_form()
 	{
 		$this->islogged();
-		$data['title'] = 'Add New Form';
+		$data['title'] = 'New Form';
+		$data['datacode'] = $this->M_main->getData('code');
 		$data['main_view'] = 'form/add_form';
 		$this->load->view('layout', $data);
 	}
@@ -86,6 +87,12 @@ class Form extends CI_Controller {
 	public function getFormData()
 	{
 		$data = $this->Form_Model->getForm();
+		echo json_encode($data);
+	}
+
+	public function getCodeData()
+	{
+		$data = $this->M_main->getData('code');
 		echo json_encode($data);
 	}
 

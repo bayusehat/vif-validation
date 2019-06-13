@@ -90,5 +90,10 @@ class M_main extends CI_Model{
 		$exec  = $this->db->query($query);
 		return $this->db->affected_rows($exec);
 	}
+
+	public function getData($table)
+	{
+		return $this->db->get($table)->result();
+	}
 	
 }

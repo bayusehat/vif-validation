@@ -17,7 +17,7 @@ class Form_Model extends CI_Model {
 		$amount_in_word = $this->input->post('amount_in_word');
 		$bank = $this->input->post('bank');
 		$account_number = $this->input->post('account_number');
-		$account_name = $this->input->get('account_name');
+		$account_name = $this->input->post('account_name');
 
 		$form = array(
 			'SUBJECT' => $subject,
@@ -37,6 +37,7 @@ class Form_Model extends CI_Model {
 
 		$code = $this->input->post('code');
 		$description_detail = $this->input->post('description_detail');
+		$duedate = $this->input->post('duedate');
 		$amount = $this->input->post('amount');
 
 		foreach ($code as $i => $item) {
@@ -44,6 +45,7 @@ class Form_Model extends CI_Model {
 				'FORM_ID' => $id,
 				'CODE' => $code[$i],
 				'DESCRIPTON' => $description_detail[$i],
+				'DUEDATE' => $duedate[$i],
 				'AMOUNT' => $amount[$i],
 			);
 
