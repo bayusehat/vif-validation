@@ -80,7 +80,7 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                                     class="btn btn-sm btn-success pull-right">Add Access</button>
                             </div>
                             <div class="col-md-12">
-                                <div class="custom-grid" id="gridAccess"></div>
+                                <div class="custom-grid" id="listAccess"></div>
                             </div>
                         </div>
                     </div>
@@ -292,8 +292,7 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                                     style="width:100%"
                                     class="form-control input-form"
                                     id="enable_Access"
-                                    required="required"
-                                    data-bind="kendoDropDownList: { data: aclMaster.dataAccess, dataTextField : 'ACCESS_ID', dataValueField : 'ACCESS_TITLE' , value: PARENT_ID }">
+                                    data-bind="kendoDropDownList: { data: aclMaster.dataAccess, dataTextField : 'ACCESS_TITLE', dataValueField : 'ACCESS_ID' , value: PARENT_ID, optionLabel: 'Top Level' }">
                             </div>
                         </div>
                     </div>
@@ -306,7 +305,6 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                                     name="Access Icon"
                                     class="form-control input-form"
                                     placeholder="home"
-                                    required="required"
                                     id="access_icon"
                                     data-bind="value: ACCESS_ICON">
                             </div>
@@ -321,7 +319,6 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                                     name="Access Url"
                                     class="form-control input-form"
                                     placeholder="#"
-                                    required="required"
                                     id="access_url"
                                     data-bind="value: ACCESS_URL">
                             </div>
@@ -355,6 +352,34 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" data-bind="click: aclMaster.saveAccess">Sumbit</button>
+                <!-- <button type="button" class="btn btn-default"
+                data-dismiss="modal">Close</button> -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div
+    id="modalManageAccess"
+    class="modal fade"
+    role="dialog"
+    data-bind="with:aclMaster"
+    data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Access</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+									<div class="custom-grid" id="listManageAccess"></div>
                 </div>
             </div>
 

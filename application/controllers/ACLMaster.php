@@ -25,7 +25,7 @@ class ACLMaster extends CI_Controller {
 	public function SaveBranch()
 	{
 		$data = null;
-		$insert = $this->ACL_Model->SaveData("branch","ID_BRANCH");
+		$insert = $this->ACL_Model->SaveData("branch","ID_BRANCH", null);
 		// if ($insert->status) {
 		// 	$message = "Data Successfully Saved";
 		// }
@@ -67,6 +67,39 @@ class ACLMaster extends CI_Controller {
 		$delete = $this->ACL_Model->DeleteData("groups","GROUP_ID", $id);
 		$result = setResultInfo($delete->status,$delete->message, $data);
 		echo json_encode($result);
+	}
+
+	public function SaveAccess()
+	{
+		$data = $this->input->post('data');
+		$data["PARENT_ID"] = ($data["PARENT_ID"]) ? $data["PARENT_ID"] : NULL ;
+		$insert = $this->ACL_Model->SaveData("access","ACCESS_ID",$data);
+		$result = setResultInfo($insert->status,$insert->message, null);
+		echo json_encode($result);
+	}
+	
+	public function GetDataAccess()
+	{
+		$data = $this->ACL_Model->GetAccess();
+		echo json_encode($data);
+	}
+
+	public function DeleteAccess()
+	{
+		$data = null;
+		$id = $this->input->post("ACCESS_ID");
+
+		$this->ACL_Model->UpdateAssosiationTable("ACCESS_ID", $id, "access_groups", array());
+		$delete = $this->ACL_Model->DeleteData("access","ACCESS_ID", $id);
+		$result = setResultInfo($delete->status,$delete->message, $data);
+		echo json_encode($result);
+	}
+
+	public function GetDataManageAccess()
+	{
+		$group_id = $this->input->post("GROUP_ID");
+		$data = $this->ACL_Model->GetJoinAccessGroups($group_id);
+		echo json_encode($data);
 	}
 }
 

@@ -6,6 +6,13 @@ class ACL_Model extends CI_Model {
 	{
 		return $this->db->get('branch')->result();
 	}
+	
+	public function GetAccess()
+	{
+		$this->db->select('*, PARENT_ID as parentId, ACCESS_ID as id');
+		
+		return $this->db->get('access')->result();
+	}
 
 	public function GetGroups()
 	{
@@ -37,11 +44,41 @@ class ACL_Model extends CI_Model {
 		return $data;
 	}
 
-	public function SaveData($table,$field_id)
+	public function GetJoinAccessGroups($group_id)
+	{
+		$this->db->select('*, PARENT_ID as parentId, ACCESS_ID as id');
+		$dataAccess = $this->db->get('access')->result_array();
+		
+		$dataGroups = $this->db->where('GROUP_ID', $group_id)->get('access_groups')->result_array();
+		foreach ($dataAccess as $k => $access) {
+			$dataAccess[$k]["DO_VIEW"] = 0;
+			$dataAccess[$k]["DO_ADD"] = 0;
+			$dataAccess[$k]["DO_EDIT"] = 0;
+			$dataAccess[$k]["DO_DELETE"] = 0;
+			$dataAccess[$k]["DO_APPROVE"] = 0;
+			$dataAccess[$k]["DO_PAYMENT"] = 0;
+			foreach ($dataGroups as $group) {
+				if ($group["ACCESS_ID"] == $group["ACCESS_ID"]) {
+					$dataAccess[$k]["DO_VIEW"] = $group["DO_VIEW"];
+					$dataAccess[$k]["DO_ADD"] = $group["DO_ADD"];
+					$dataAccess[$k]["DO_EDIT"] = $group["DO_EDIT"];
+					$dataAccess[$k]["DO_DELETE"] = $group["DO_DELETE"];
+					$dataAccess[$k]["DO_APPROVE"] = $group["DO_APPROVE"];
+					$dataAccess[$k]["DO_PAYMENT"] = $group["DO_PAYMENT"];
+				}
+			}
+		}
+		
+		return $dataAccess;
+	}
+
+	public function SaveData($table,$field_id,$data)
 	{
 		// $result = (object) ['status' => false, 'message' => "", 'id' => ""];
 		// $array;
-		$data = $this->input->post("data");
+		if (!$data) {
+			$data = $this->input->post("data");
+		}
 		$action = "insert";
 		$id = $data[$field_id];
 		$errmess = "";
