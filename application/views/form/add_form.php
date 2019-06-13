@@ -124,17 +124,18 @@
 			<div class="hr-line"></div>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
-						<!-- <div class="form-group">
+						<div class="form-group">
 							<label>Send To</label>
 							<select class="form-control" name="">
 								<option value="">Select Destination</option>
-								<option>Dummy</option>
-								<option>Dummy</option>
-								<option>Dummy</option>
-								<option>Dummy</option>
+								<option>Manager</option>
+								<option>Direktur</option>
+								<option>Accounting Pusat</option>
 							</select>
-						</div> -->
+						</div>
 					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<button type="submit" class="btn btn-success btn-block right" id="btnSendForm"><i class="fa fa-paper-plane"></i> Send Form</button>
 					</div>
