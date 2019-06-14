@@ -137,7 +137,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
-						<button type="submit" class="btn btn-success btn-block right" id="btnSendForm"><i class="fa fa-paper-plane"></i> Send Form</button>
+						<button type="submit" class="btn btn-success btn-lg" id="btnSendForm"><i class="fa fa-paper-plane"></i> Send Form</button>
 					</div>
 				</div>
 			</div>

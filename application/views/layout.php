@@ -245,35 +245,17 @@
 			</div>
 		</div><!--/.row-->
 	</div>	<!--/.main-->
-<!--===============================================================================================-->	
-	<!-- <script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script> -->
-<!--===============================================================================================-->
-	<!-- <script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script> -->
-	<!-- <script src="<?= base_url();?>assets/vendor/bootstrap/js/bootstrap.min.js"></script> -->
-<!--===============================================================================================-->
-	<!-- <script src="<?= base_url();?>assets/js/chart.min.js"></script>
-	<script src="<?= base_url();?>assets/js/chart-data.js"></script>
-	<script src="<?= base_url();?>assets/js/easypiechart.js"></script>
-	<script src="<?= base_url();?>assets/js/easypiechart-data.js"></script>
-	<script src="<?= base_url();?>assets/js/bootstrap-datepicker.js"></script>
-	<script src="<?= base_url();?>assets/js/custom.js"></script> -->
 	<script src="<?= base_url();?>assets/js/sweetalert/sweetalert2@7.js"></script>
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<script src="<?= base_url();?>assets/js/jquery-1.9.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
 	<script src="<?= base_url();?>assets/js/lightgallery-all.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery.mousewheel.min.js"></script>
+	<script src="<?= base_url();?>assets/js/lg-plugin/lg-thumbnail.min.js"></script>
+	<script src="<?= base_url();?>assets/js/lg-plugin/lg-fullscreen.min.js"></script>
 	<script>
-		$(document).ready(function(){
-			var cc = $("#attachment").lightGallery({
-				pager: true,
-				thumbnail : true,
-				selector : '.item'
-			});
-
-			console.log(cc);
-		});
 		function logout() {
 			swal({
 			    title: "Are you sure?",

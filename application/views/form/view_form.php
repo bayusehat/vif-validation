@@ -157,6 +157,7 @@
 				</div>
 			</div>
 		</div>
+	<div class="hr-line"></div>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
 				<button type="submit" class="btn btn-success btn-lg" id="btnSendForm"><i class="fa fa-paper-plane"></i> Verify</button>
@@ -165,3 +166,12 @@
 		</div>
 	</form>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+			var cc = $("#attachment").lightGallery({
+				thumbnail : true
+			});
+
+			console.log(cc);
+		});
+</script>
