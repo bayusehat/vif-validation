@@ -89,7 +89,7 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<div class="form-group">
-					<h3 class="text-info"><i class="fa fa-money"></i> Detail</h3>
+					<h3 class="text-info"><i class="fa fa-list-alt"></i> Detail</h3>
 				</div>
 			</div>
 		</div>
@@ -152,7 +152,7 @@
 							</a>';
 						} 
 					}else{
-						echo '<h2><i class="fa fa-times"></i> No files uploaded</h2>';
+						echo '<h4><i class="fa fa-times color-red"></i> No files uploaded</h4>';
 				} 
 				?> 
 				</div>
