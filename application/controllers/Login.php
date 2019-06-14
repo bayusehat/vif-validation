@@ -71,8 +71,8 @@ class Login extends CI_Controller {
 			'token' => ''
 		);
 
-		$this->session->sess_destroy($data);
-		redirect('/','refresh');
+		$end = $this->session->sess_destroy($data);
+		echo json_encode($end);
 	}
 }
 

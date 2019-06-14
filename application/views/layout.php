@@ -178,6 +178,11 @@
 							</a></li>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle count-info" href="#" onclick="logout();">
+							<em class="fa fa-sign-out color-red"></em>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div><!-- /.container-fluid -->
@@ -202,7 +207,7 @@
 		<ul class="nav menu">
 			<li><a href="<?= base_url();?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> All Forms</a></li>
-			<li><a href="#"><em class="fa fa-sign-in">&nbsp;</em> Verified Forms</a></li>
+			<li><a href="#"><em class="fa fa-checked">&nbsp;</em> Verified Forms</a></li>
 			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Revision Forms</a></li>
 			<li><a href="#"><em class="fa fa-window-close">&nbsp;</em> Rejected Forms</a></li>
 
@@ -222,7 +227,7 @@
 					</a></li>
 				</ul>
 			</li> -->
-			<li><a href="<?= base_url();?>login/logout" style="color:red"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+			<!-- <li><a href="<?= base_url();?>login/logout" style="color:red"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li> -->
 		</ul>
 	</div><!--/.sidebar-->
 		
@@ -248,9 +253,6 @@
 				?>
 			</div>
 		</div>
-		
-		
-		
 			<div class="col-sm-12">
 				<p class="back-link">Victory International Future &copy; 2019</p>
 			</div>
@@ -279,19 +281,14 @@
 	        });
 		});
 		function logout() {
-			swal({
-			    title: "Are you sure?",
-			    text: "You will not be able to recover this imaginary file!",
-			    type: "warning",
-			    showCancelButton: true,
-			    confirmButtonColor: '#DD6B55',
-			    confirmButtonText: 'Yes, I am sure!',
-			    cancelButtonText: "No, cancel it!",
-			    closeOnConfirm: false,
-			    closeOnCancel: false
-			 }).then((res) => {
-			 	viewModel.ajakPost(base_url+"login/logout",{},function(res){
-					window.location = base_url;
+			swal_confirm(function(){
+				$.ajax({
+					type:"POST",
+					url : base_url+"/login/logout",
+					dataType:"JSON",
+					success:function(data){
+						window.location = base_url;
+					},
 				})
 			})
 		}

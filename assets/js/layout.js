@@ -97,7 +97,7 @@ function swal_confirm_delete(callback) {
 function swal_confirm(callback) {
     swal({
         title: 'Are you sure?',
-        text: "Send the form",
+        text: "",
         type: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
