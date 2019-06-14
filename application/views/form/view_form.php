@@ -144,20 +144,20 @@
 			<div class="col-md-12 col-sm-12">
 				<div id="attachment">
 				<?php
-				if($attachment > 0){ ?>
-				<?php 
-				foreach ($attachment as $data) { ?>
-					<a class="item" href="<?= base_url();?>assets/uploads/files/<?= $data->FILE_NAME;?>">
-				      	<img src="<?= base_url();?>assets/uploads/files/<?= $data->FILE_NAME;?>" />
-					</a>
-				<?php	} ?>
-			<?php }else{ ?>
-				<label>No Files Uploaded</label>
-			<?php } ?> 
+				if($attachment > 0){
+						foreach ($attachment as $data) { 
+							echo '<a class="item" href="'.base_url().'assets/uploads/files/'.$data->FILE_NAME.'">
+						      	<img src="'.base_url().'assets/uploads/files/'.$data->FILE_NAME.'" />
+							</a>';
+						} 
+					}else{
+						echo '<h2><i class="fa fa-times"></i> No files uploaded</h2>';
+				} 
+				?> 
 				</div>
 			</div>
 		</div>
-	<div class="hr-line"></div>
+	<br>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
 				<button type="submit" class="btn btn-success btn-lg" id="btnSendForm"><i class="fa fa-paper-plane"></i> Verify</button>

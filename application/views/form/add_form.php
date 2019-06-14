@@ -116,7 +116,7 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12">
 						<div class="form-group">
-							<label>Attachment <span class="color-red">*</span></label>
+							<label>Attachment</label>
 							<input type="file" name="files" class="form-control">
 						</div>
 					</div>
