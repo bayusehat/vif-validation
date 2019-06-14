@@ -79,10 +79,17 @@
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-12">
-				<div class="form-group">
-					<label>Created by ...</label>
-					<br>
-					<p>On Saturday, 15 June 2019</p>
+				<div class="scroll">
+					<?php
+						for($i=0;$i<20;$i++){
+							echo
+							'<div class="form-group">
+								<label>Created by ...</label>
+								<br>
+								<p>On Saturday, 15 June 2019</p>
+							</div>';
+						}
+					?>
 				</div>
 			</div>
 		</div>
@@ -156,6 +163,13 @@
 				} 
 				?> 
 				</div>
+			</div>
+		</div>
+	<div class="hr-line"></div>
+		<div class="row">
+			<div class="col-md-5 col-sm-12">
+				<label>Notes</label>
+				<textarea class="form-control" name="notes"></textarea>
 			</div>
 		</div>
 	<br>

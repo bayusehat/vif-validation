@@ -115,6 +115,12 @@
 			width: 200px; 
 			border: 1px solid lightgrey;
 		}
+		.scroll{
+			overflow: scroll;
+			overflow-y: auto;
+			overflow-x: hidden;
+			height: 355px;
+		}
 	</style>
 </head>
 <body>
