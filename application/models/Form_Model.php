@@ -86,6 +86,23 @@ class Form_Model extends CI_Model {
 						->row();
 	}
 
+	public function getDetailForm($FORM_ID)
+	{
+		return $this->db->select('detail.*,code.NAME as CODENAME,code.DESCRIPTION as CODEDES')
+						->from('detail')
+						->join('code','code.CODE_ID=detail.CODE')
+						->where('FORM_ID',$FORM_ID)
+						->get()
+						->result();
+	}
+
+	public function getAttachment($FORM_ID)
+	{
+		return $this->db->where('FORM_ID',$FORM_ID)
+						->get('attachment')
+						->result();
+	}
+
 }
 
 /* End of file Form_Model.php */

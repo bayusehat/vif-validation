@@ -13,6 +13,7 @@
 	<link href="<?= base_url();?>assets/css/jquery-ui.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/js/fileuploader/src/jquery.fileuploader.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/jquery.fileuploader-theme-thumbnails.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/css/lightgallery.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -97,7 +98,8 @@
 		    color: #555;
 		    background-color: #fff;
 		    background-image: none;
-		    border-radius: 4px;
+		    /*border-radius: 4px;*/
+		    border-bottom: 1px solid lightgrey;
 		}
 		.text-info{
 			color: #30a5ff;
@@ -259,17 +261,19 @@
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+	<script src="<?= base_url();?>assets/js/lightgallery-all.min.js"></script>
+	<script src="<?= base_url();?>assets/js/jquery.mousewheel.min.js"></script>
 	<script>
-		// window.onload = function () {
-		// 	var chart1 = document.getElementById("line-chart").getContext("2d");
-		// 	window.myLine = new Chart(chart1).Line(lineChartData, {
-		// 	responsive: true,
-		// 	scaleLineColor: "rgba(0,0,0,.2)",
-		// 	scaleGridLineColor: "rgba(0,0,0,.05)",
-		// 	scaleFontColor: "#c5c7cc"
-		// 	});
-		// };
+		$(document).ready(function(){
+			var cc = $("#attachment").lightGallery({
+				pager: true,
+				thumbnail : true,
+				selector : '.item'
+			});
 
+			console.log(cc);
+		});
 		function logout() {
 			swal({
 			    title: "Are you sure?",

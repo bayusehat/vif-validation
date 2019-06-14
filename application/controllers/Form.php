@@ -58,9 +58,10 @@ class Form extends CI_Controller {
 
 			if (count($fileupload) > 0) {
 					foreach ($fileupload as $file) {
+						$getFileName = explode("/", $file);
 						$insertFile = $this->db->insert('attachment', array(
 							'FORM_ID' => $form_id,
-							'FILE_NAME' => $file
+							'FILE_NAME' => $getFileName[4]
 					));
 				}
 			}
@@ -98,6 +99,8 @@ class Form extends CI_Controller {
 		$data['title'] = 'View Form';
 		$data['main_view'] = 'form/view_form';
 		$data['form'] = $this->Form_Model->getDataForm($FORM_ID);
+		$data['detail'] = $this->Form_Model->getDetailForm($FORM_ID);
+		$data['attachment'] = $this->Form_Model->getAttachment($FORM_ID);
 		$this->load->view('layout', $data);
 	}
 }
