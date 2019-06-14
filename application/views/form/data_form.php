@@ -64,6 +64,7 @@
                     template : 
                     "<a href='"+base_url+"form/view_form/#: data.FORM_ID #'> #: data.SUBJECT # <i class='fa fa-link'></i></a>",
                     title: "SUBJECT",
+                    width : "300px"
                 }, {
                     field: "DESCRIPTION",
                     title: "DESCRIPTION"
