@@ -142,12 +142,13 @@
 	<div class="hr-line"></div>
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
-				<div id="attachment">
+				<div id="lightgallery">
 				<?php
-				if($attachment > 0){
+				if(count($attachment) > 0){
 						foreach ($attachment as $data) { 
-							echo '<a class="item" href="'.base_url().'assets/uploads/files/'.$data->FILE_NAME.'">
-						      	<img src="'.base_url().'assets/uploads/files/'.$data->FILE_NAME.'" />
+							echo 
+							'<a class="thumbnail" href="'.base_url().'assets/uploads/files/'.$data->FILE_NAME.'">
+						      	<img src="'.base_url().'assets/uploads/files/'.$data->FILE_NAME.'" style="width: 100%"/>
 							</a>';
 						} 
 					}else{
@@ -167,11 +168,4 @@
 	</form>
 </div>
 <script type="text/javascript">
-	$(document).ready(function(){
-			var cc = $("#attachment").lightGallery({
-				thumbnail : true
-			});
-
-			console.log(cc);
-		});
 </script>

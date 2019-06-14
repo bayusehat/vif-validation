@@ -6,14 +6,14 @@
 	<title><?= $title; ?> - Validation App</title>
 	<link rel="icon" type="image/png" href="<?= base_url();?>assets/images/icon.png"/>
 	<link href="<?= base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?= base_url();?>assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/fontsAw/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link href="<?= base_url();?>assets/css/datepicker3.css" rel="stylesheet"> -->
 	<link href="<?= base_url();?>assets/css/styles.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/layout.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/jquery-ui.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/js/fileuploader/src/jquery.fileuploader.css" rel="stylesheet">
 	<link href="<?= base_url();?>assets/css/jquery.fileuploader-theme-thumbnails.css" rel="stylesheet">
-	<link href="<?= base_url();?>assets/css/lightgallery.css" rel="stylesheet">
+	<link href="<?= base_url();?>assets/css/lightgallery.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -30,9 +30,12 @@
 	<!--===============================================================================================-->	
 	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery-1.9.1.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/lightgallery.min.js');?>"></script>
 	<script src="<?= base_url();?>assets/js/jquery-ui.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery.price_format.min.js"></script>
 	<script src="<?= base_url();?>assets/js/fileuploader/src/jquery.fileuploader.min.js"></script>
+
 	<!--===============================================================================================-->
 	<script src="<?= base_url();?>assets/vendor/bootstrap/js/popper.js"></script>
 	<script src="<?= base_url();?>assets/js/bootstrap.min.js"></script>
@@ -103,6 +106,14 @@
 		}
 		.text-info{
 			color: #30a5ff;
+		}
+		.thumbnail{
+			width: 20%; 
+			float: left; 
+			padding: 15px; 
+			margin:15px; 
+			width: 200px; 
+			border: 1px solid lightgrey;
 		}
 	</style>
 </head>
@@ -261,16 +272,11 @@
 	<!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
-	<script src="<?= base_url();?>assets/js/lightgallery-all.min.js"></script>
-	<script src="<?= base_url();?>assets/js/jquery.mousewheel.min.js"></script>
-	<script src="<?= base_url();?>assets/js/lg-plugin/lg-thumbnail.min.js"></script>
-	<script src="<?= base_url();?>assets/js/lg-plugin/lg-fullscreen.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			var cc = $("#attachment").lightGallery();
-
-			console.log(cc);
+			$("#lightgallery").lightGallery({
+	            thumbnail: true
+	        });
 		});
 		function logout() {
 			swal({
