@@ -250,27 +250,14 @@
 		event.preventDefault();
 		var form = $("#formApplication").closest("form");
 		var formData = new FormData(form[0]);
-		swal({
-			  title: 'Are you sure?',
-			  text: "Send the form",
-			  type: 'question',
-			  showCancelButton: true,
-			  confirmButtonColor: '#3085d6',
-			  cancelButtonColor: '#d33',
-			  confirmButtonText: 'Yes'
-			}).then(function(result) {
-				if(result.value)
-				{
-					viewModel.ajaxFilePost(base_url+"form/add_form_run",formData,function(res){
+			swal_confirm(function(){
+				viewModel.ajaxFilePost(base_url+"form/add_form_run",formData,function(res){
 						swal_success(res.msg);
 						$('form#formApplication').trigger('reset');
 						setTimeout(function(){
 							window.location = base_url+"form";
-						},1000);
-					});
-				}else{
-
-				} 
-			})
+					},1000);
+				});
+			})		
 		});
 </script>

@@ -28,7 +28,8 @@ class Form_Model extends CI_Model {
 			'BANK' => $bank,
 			'ACCOUNT_NUMBER' => $account_number,
 			'ACCOUNT_NAME' => $account_name,
-			'STAGE' => '123' 
+			'STAGE' => '123',
+			'STATUS' => 'Open' 
 		);
 
 		$this->db->insert('form', $form);
@@ -40,7 +41,7 @@ class Form_Model extends CI_Model {
 		$duedate = $this->input->post('duedate');
 		$amount = $this->input->post('amount');
 		$amount = str_replace(",","", $amount);
-		
+
 		foreach ($code as $i => $item) {
 			$form_detail[] = array(
 				'FORM_ID' => $id,
@@ -58,13 +59,32 @@ class Form_Model extends CI_Model {
 
 		//helper_log($log_action="",$log_status="",$log_message="") TO USER HELPER LOG
 		if($this->db->affected_rows()>0){
-			helper_log('insert',true,'Send new form success '.$id);
+			helper_log('insert','Open','Send new form success '.$id);
 			return $id;
 		}else{
 			helper_log('insert',false,'Send new form failed');
 			return FALSE;
 		}
-	}	
+	}
+
+	public function deleteForm($FORM_ID)
+	{
+		$this->db->where('FORM_ID', $FORM_ID)
+				 ->delete('form');
+
+		if($this->db->affected_rows()>0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}	
+	}
+
+	public function getDataForm($FORM_ID)
+	{
+		return $this->db->where('FORM_ID', $FORM_ID)
+						->get('form')
+						->row();
+	}
 
 }
 

@@ -83,9 +83,24 @@
 			padding: 10px 0 5px 0px;
 			border-top: 1px solid lightgrey;
 		}
-
 		.custom-grid .k-grid-content, .custom-grid .k-grid-content-locked {
 		    max-height:400px;
+		}
+		.form-visible{
+			border: none;
+			display: block;
+		    width: 100%;
+		    height: 34px;
+		    padding: 6px 0px 6px 0px;
+		    font-size: 14px;
+		    line-height: 1.42857143;
+		    color: #555;
+		    background-color: #fff;
+		    background-image: none;
+		    border-radius: 4px;
+		}
+		.text-info{
+			color: #30a5ff;
 		}
 	</style>
 </head>

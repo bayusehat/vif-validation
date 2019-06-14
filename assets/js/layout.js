@@ -94,6 +94,24 @@ function swal_confirm_delete(callback) {
     });
 }
 
+function swal_confirm(callback) {
+    swal({
+        title: 'Are you sure?',
+        text: "Send the form",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then(function(result) {
+        if(result.value)
+            {
+                callback()
+            }else{
+        } 
+    })
+}
+
 $(function() {
     // console.log('test');
 })

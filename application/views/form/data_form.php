@@ -28,6 +28,7 @@
 				dataType : "json"
 			}
 		},
+		sort: { field: "FORM_ID", dir: "desc" },
 		pageSize :10,
 		autoSync: true,
          	schema: {
@@ -48,18 +49,20 @@
             },	
 			dataSource : dataSource,
 			height: 500,
-                groupable: true,
+                // groupable: true,
                 sortable: true,
-               	filterable: {
-                    mode: "row"
-                },
+               	// filterable: {
+                //     mode: "row"
+                // },
                 pageable: {
                     refresh: true,
                     pageSizes: true,
                     buttonCount: 5
                 },
                 columns: [{
-                    field: "SUBJECT",
+                    // field: "SUBJECT",
+                    template : 
+                    "<a href='"+base_url+"form/view_form/#: data.FORM_ID #'> #: data.SUBJECT # <i class='fa fa-link'></i></a>",
                     title: "SUBJECT",
                 }, {
                     field: "DESCRIPTION",
@@ -72,12 +75,31 @@
                 	field: "STAGE",
                 	title: "STAGE"
                 },{
-                    template: "<div class='form-group'>"+
-                    "<a href='"+base_url+"form/detail/#: data.FORM_ID #' class='btn btn-info'><i class='fa fa-pencil'></i></a>"+
-                    "</div>",
-                    title: "ACTION",
-                }]
+                	field:
+                	"STATUS",
+                	title: "STATUS"
+                }
+                // {
+                //     template: 
+                //     "<div class='form-group'>"+
+                //     	"<a href='javascript:void(0)' onclick='return deleteForm(#: data.FORM_ID #)' class='btn btn-danger'><i class='fa fa-trash'></i></a>"+
+                //     "</div>",
+                //     title: "ACTION",
+                // }
+                ]
 		})
+
+	function deleteForm(id) {
+		swal_confirm(function(){
+			viewModel.ajaxPost(base_url+"/form/deleteForm/"+id,{"FORM_ID" : id},function(res) {
+				swal_success(res.msg);
+				getform();
+			},
+			function(res){
+				swal_failed(res.msg);
+			});
+		})
+	}
 	
 	$(function(){
 		getform()

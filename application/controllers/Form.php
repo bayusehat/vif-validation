@@ -80,16 +80,26 @@ class Form extends CI_Controller {
 
 	public function getFormData()
 	{
+		$this->islogged();	
 		$data = $this->Form_Model->getForm();
 		echo json_encode($data);
 	}
 
 	public function getCodeData()
 	{
+		$this->islogged();
 		$data = $this->M_main->getData('code');
 		echo json_encode($data);
 	}
 
+	public function view_form($FORM_ID)
+	{
+		$this->islogged();
+		$data['title'] = 'View Form';
+		$data['main_view'] = 'form/view_form';
+		$data['form'] = $this->Form_Model->getDataForm($FORM_ID);
+		$this->load->view('layout', $data);
+	}
 }
 
 /* End of file Form.php */
