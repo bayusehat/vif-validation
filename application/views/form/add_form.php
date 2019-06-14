@@ -234,7 +234,8 @@
 		});
 
 		$("#detailTable").delegate("button", "click", function() {
-		   $(this).closest("tr").remove(); 
+		   $(this).closest("tr").remove();
+		   total(); 
 		});
 	});
 

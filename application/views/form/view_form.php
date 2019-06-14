@@ -81,7 +81,7 @@
 			<div class="col-md-4 col-sm-12">
 				<div class="scroll">
 					<?php
-						for($i=0;$i<20;$i++){
+						for($i=0;$i<5;$i++){
 							echo
 							'<div class="form-group">
 								<label>Created by ...</label>
