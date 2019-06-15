@@ -6,13 +6,13 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label>Subject <span class="color-red">*</span> </label>
-							<input type="text" name="subject" class="form-control" placeholder="Subject" id="" required="">
+							<input type="text" name="subject" class="form-control capitalize" placeholder="Subject" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
 							<label>Description <span class="color-red">*</span></label>
-							<input type="text" name="description" class="form-control" placeholder="Description" id="" required="">
+							<input type="text" name="description" class="form-control capitalize" placeholder="Description" id="" required="">
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -27,7 +27,7 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label>Amount in Word <span class="color-red">*</span></label>
-							<input type="text" name="amount_in_word" class="form-control" placeholder="Amount in word" id="" required="">
+							<input type="text" name="amount_in_word" class="form-control capitalize" placeholder="Amount in word" id="" required="">
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label>Name <span class="color-red">*</span></label>
-							<input type="text" name="account_name" class="form-control" placeholder="Account Name" id="" required="">
+							<input type="text" name="account_name" class="form-control capitalize" placeholder="Account Name" id="" required="">
 						</div>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 							<tbody id="amountDetail">
 								<tr>
 									<td>
-										<select class="form-control code" name="code[0]">
+										<select class="form-control code" name="code[]">
 											<?php
 												foreach ($datacode as $data) { ?>
 												    <option value="<?= $data->CODE_ID;?>"><?= $data->NAME.' - '.$data->DESCRIPTION;?></option>

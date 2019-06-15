@@ -3,7 +3,7 @@
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<div class="row">
 				<div class="col-md-12">
-					<a href="<?= base_url();?>form/add_form" class="btn btn-success mb-3 right"><i class="fa fa-plus"></i> ADD NEW FORM</a>
+					<a href="<?= base_url();?>form/add_form" class="btn btn-success mb-3 right"><i class="fa fa-plus"></i> New Form</a>
 				</div>
 			</div>
 		<div class="hr-line"></div>
@@ -42,29 +42,24 @@
 	})
 
 	$("#grid").kendoGrid({	
-	 		toolbar: ["excel"],
-            excel: {
-                fileName: "Data form Export.xlsx",
-                filterable: true
-            },	
 			dataSource : dataSource,
-			height: 500,
+			// height: 500,
                 // groupable: true,
                 sortable: true,
-               	// filterable: {
-                //     mode: "row"
-                // },
+               	filterable: {
+                    mode: "row"
+                },
                 pageable: {
                     refresh: true,
                     pageSizes: true,
                     buttonCount: 5
                 },
                 columns: [{
-                    // field: "SUBJECT",
+                    field: "SUBJECT",
                     template : 
                     "<a href='"+base_url+"form/view_form/#: data.FORM_ID #'> #: data.SUBJECT # <i class='fa fa-link'></i></a>",
                     title: "SUBJECT",
-                    width : "300px"
+                    width: "300px"
                 }, {
                     field: "DESCRIPTION",
                     title: "DESCRIPTION"
@@ -76,18 +71,9 @@
                 	field: "STAGE",
                 	title: "STAGE"
                 },{
-                	field:
-                	"STATUS",
+                	field: "STATUS",
                 	title: "STATUS"
-                }
-                // {
-                //     template: 
-                //     "<div class='form-group'>"+
-                //     	"<a href='javascript:void(0)' onclick='return deleteForm(#: data.FORM_ID #)' class='btn btn-danger'><i class='fa fa-trash'></i></a>"+
-                //     "</div>",
-                //     title: "ACTION",
-                // }
-                ]
+                }]
 		})
 
 	function deleteForm(id) {
@@ -102,8 +88,8 @@
 		})
 	}
 	
-	$(function(){
-		getform()
-	});
+	// $(function(){
+	// 	getform()
+	// });
 </script>
 

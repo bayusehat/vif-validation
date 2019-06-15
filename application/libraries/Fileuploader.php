@@ -20,7 +20,7 @@ class FileUploader {
         'extensions' => null,
         'required' => false,
         'uploadDir' => './assets/uploads/files/',
-        'title' => array('auto', 12),
+        'title' => 'name',
 		'replace' => false,
         'listInput' => true,
 		'files' => array()

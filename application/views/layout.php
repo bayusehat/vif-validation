@@ -121,6 +121,9 @@
 			overflow-x: hidden;
 			height: 355px;
 		}
+		.capitalize{
+			text-transform: capitalize;
+		}
 	</style>
 </head>
 <body>
@@ -213,7 +216,7 @@
 		<ul class="nav menu">
 			<li><a href="<?= base_url();?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> All Forms</a></li>
-			<li><a href="#"><em class="fa fa-checked">&nbsp;</em> Verified Forms</a></li>
+			<li><a href="#"><em class="fa fa-check">&nbsp;</em> Verified Forms</a></li>
 			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Revision Forms</a></li>
 			<li><a href="#"><em class="fa fa-window-close">&nbsp;</em> Rejected Forms</a></li>
 
