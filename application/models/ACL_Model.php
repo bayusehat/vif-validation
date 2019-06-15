@@ -50,6 +50,7 @@ class ACL_Model extends CI_Model {
 		$dataAccess = $this->db->get('access')->result_array();
 		
 		$dataGroups = $this->db->where('GROUP_ID', $group_id)->get('access_groups')->result_array();
+		
 		foreach ($dataAccess as $k => $access) {
 			$dataAccess[$k]["DO_VIEW"] = 0;
 			$dataAccess[$k]["DO_ADD"] = 0;
@@ -58,7 +59,8 @@ class ACL_Model extends CI_Model {
 			$dataAccess[$k]["DO_APPROVE"] = 0;
 			$dataAccess[$k]["DO_PAYMENT"] = 0;
 			foreach ($dataGroups as $group) {
-				if ($group["ACCESS_ID"] == $group["ACCESS_ID"]) {
+				// var_dump($group);
+				if ($access["ACCESS_ID"] == $group["ACCESS_ID"]) {
 					$dataAccess[$k]["DO_VIEW"] = $group["DO_VIEW"];
 					$dataAccess[$k]["DO_ADD"] = $group["DO_ADD"];
 					$dataAccess[$k]["DO_EDIT"] = $group["DO_EDIT"];
@@ -109,7 +111,7 @@ class ACL_Model extends CI_Model {
 		$data = $this->input->post("data");
 		$data_join = $this->input->post("data_join");
 
-		$insert = $this->SaveData("groups","GROUP_ID");
+		$insert = $this->SaveData("groups","GROUP_ID", $data);
 		$saveJoinData = array();
 		if ($insert->status) {
 			if ($data_join) {
@@ -124,6 +126,12 @@ class ACL_Model extends CI_Model {
 		}
 
 		return $insert;
+	}
+
+	public function SaveAccessGroups()
+	{
+		$saveJoinData = $this->input->post("data");
+		return $this->UpdateAssosiationTable("GROUP_ID", $saveJoinData[0]["GROUP_ID"],"access_groups",$saveJoinData);
 	}
 
 	public function UpdateAssosiationTable($init_id_field, $main_id, $table_name, $data)
@@ -148,7 +156,9 @@ class ACL_Model extends CI_Model {
 			$changedData = ' '.$this->ConverDataJoinToArray($oldData->row_array());
 			helper_log("delete",true,'delete '.$table_name.$changedData);
 		}
-		
+
+		$status = ($this->db->affected_rows() > 0) ? true : false ;
+		return setResultInfoDb($status,"Data ".$action." ".($status) ? "successfully" : "failed","");
 	}
 
 	public function ConverDataJoinToArray($data)

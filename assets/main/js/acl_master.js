@@ -277,7 +277,9 @@ aclMaster.deleteGroups = function(e,id,uid) {
     })
 }
 
+aclMaster.selectedGroupIdForManageAccess = ""
 aclMaster.manageAccess = function(e,id,uid) {
+    aclMaster.selectedGroupIdForManageAccess = id
     viewModel.ajaxPost(base_url + "aclmaster/getdatamanageaccess", {GROUP_ID:id}, function(res) {
         aclMaster.generateManageAccess(res);
     })
@@ -299,7 +301,7 @@ aclMaster.generateManageAccess = function(dataJson) {
             headerAttributes: { style: "text-align: center;" },
             template: function(e) {
                 checked = e.DO_VIEW ? "checked" : ""
-                return "<input type='checkbox' " + checked + ">"
+                return "<input name='DO_VIEW' type='checkbox' " + checked + ">"
             },
             attributes: { style: "text-align: center;" }
         }, 
@@ -309,7 +311,7 @@ aclMaster.generateManageAccess = function(dataJson) {
             headerAttributes: { style: "text-align: center;" },
             template: function(e) {
                 checked = e.DO_ADD ? "checked" : ""
-                return "<input type='checkbox' " + checked + ">"
+                return "<input name='DO_ADD' type='checkbox' " + checked + ">"
             },
             attributes: { style: "text-align: center;" }
         }, 
@@ -319,7 +321,7 @@ aclMaster.generateManageAccess = function(dataJson) {
             headerAttributes: { style: "text-align: center;" },
             template: function(e) {
                 checked = e.DO_EDIT ? "checked" : ""
-                return "<input type='checkbox' " + checked + ">"
+                return "<input name='DO_EDIT' type='checkbox' " + checked + ">"
             },
             attributes: { style: "text-align: center;" }
         }, 
@@ -329,7 +331,7 @@ aclMaster.generateManageAccess = function(dataJson) {
             headerAttributes: { style: "text-align: center;" },
             template: function(e) {
                 checked = e.DO_DELETE ? "checked" : ""
-                return "<input type='checkbox' " + checked + ">"
+                return "<input name='DO_DELETE' type='checkbox' " + checked + ">"
             },
             attributes: { style: "text-align: center;" }
         }, 
@@ -339,7 +341,7 @@ aclMaster.generateManageAccess = function(dataJson) {
             headerAttributes: { style: "text-align: center;" },
             template: function(e) {
                 checked = e.DO_APPROVE ? "checked" : ""
-                return "<input type='checkbox' " + checked + ">"
+                return "<input name='DO_APPROVE' type='checkbox' " + checked + ">"
             },
             attributes: { style: "text-align: center;" }
         }, 
@@ -349,7 +351,7 @@ aclMaster.generateManageAccess = function(dataJson) {
             headerAttributes: { style: "text-align: center;" },
             template: function(e) {
                 checked = e.DO_PAYMENT ? "checked" : ""
-                return "<input type='checkbox' " + checked + ">"
+                return "<input name='DO_PAYMENT' type='checkbox' " + checked + ">"
             },
             attributes: { style: "text-align: center;" }
         }, 
@@ -368,6 +370,47 @@ aclMaster.generateManageAccess = function(dataJson) {
         }
     });
     
+}
+
+aclMaster.saveAccessGroups = function() {
+    // ManageAccessForGroups
+    param = {
+        data : aclMaster.processDataManageAcccess(),
+    }
+
+    // if (aclMaster.validateForm("#modalGroups")) {
+        // console.log(param);
+        viewModel.ajaxPost(base_url + "aclmaster/manageaccessforgroups", param, function(res) {
+            if (res.status) {
+                swal_success(res.message)
+                // $("#modalGroups").modal("hide")
+                // aclMaster.getDataGroups()
+            }else{
+                swal_failed(res.message)
+            }
+        }, function(err) {
+            swal_failed(err.responseText);
+
+        })
+    // }
+}
+
+aclMaster.processDataManageAcccess = function() {
+    dataAccess = []
+    listData = $("#listManageAccess").data("kendoTreeList").dataSource.data()
+    _.forEach(listData, function(vData,kData) {
+        access = {}
+        access["GROUP_ID"] = aclMaster.selectedGroupIdForManageAccess
+        access["ACCESS_ID"] = vData["ACCESS_ID"]
+        myInput = $("#listManageAccess").data("kendoTreeList").tbody.find("tr[data-uid='" + vData["uid"] + "'] input");
+        _.forEach(myInput, function(vInput,kInput){
+            access[$(vInput).attr("name")] = $(vInput).is(":checked") ? 1 : 0;
+        })
+
+        dataAccess.push(access)
+    })
+
+    return dataAccess
 }
 
 aclMaster.newAccess = function() {

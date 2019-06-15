@@ -384,7 +384,7 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-success" data-bind="click: aclMaster.saveAccess">Sumbit</button>
+                <button class="btn btn-success" data-bind="click: aclMaster.saveAccessGroups">Sumbit</button>
                 <!-- <button type="button" class="btn btn-default"
                 data-dismiss="modal">Close</button> -->
             </div>

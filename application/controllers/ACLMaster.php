@@ -70,6 +70,15 @@ class ACLMaster extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function ManageAccessForGroups()
+	{
+		$this->isLogged();
+		$data = null;
+		$insert = $this->ACL_Model->SaveAccessGroups();
+		$result = setResultInfo($insert->status,$insert->message, $data);
+		echo json_encode($result);
+	}
+
 	public function DeleteGroups()
 	{
 		$this->isLogged();
@@ -77,6 +86,7 @@ class ACLMaster extends CI_Controller {
 		$id = $this->input->post("GROUP_ID");
 
 		$this->ACL_Model->UpdateAssosiationTable("GROUP_ID", $id, "groups_branch", array());
+		$this->ACL_Model->UpdateAssosiationTable("GROUP_ID", $id, "access_groups", array());
 		$delete = $this->ACL_Model->DeleteData("groups","GROUP_ID", $id);
 		$result = setResultInfo($delete->status,$delete->message, $data);
 		echo json_encode($result);
