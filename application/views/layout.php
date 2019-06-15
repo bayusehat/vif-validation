@@ -31,7 +31,7 @@
 	<script src="<?= base_url();?>assets/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery-1.9.1.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/lightgallery.min.js');?>"></script>
+    <script src="<?= base_url();?>assets/js/lightgallery-all.min.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery-ui.js"></script>
 	<script src="<?= base_url();?>assets/js/jquery.price_format.min.js"></script>
 	<script src="<?= base_url();?>assets/js/fileuploader/src/jquery.fileuploader.min.js"></script>
