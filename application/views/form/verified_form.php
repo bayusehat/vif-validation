@@ -71,6 +71,8 @@
                 	field: "STAGE",
                 	title: "STAGE"
                 },{
+                	template:
+                	"<div class='label label-success'>#: data.STATUS #</div>",
                 	field: "STATUS",
                 	title: "STATUS"
                 }]

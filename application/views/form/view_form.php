@@ -81,14 +81,24 @@
 			<div class="col-md-4 col-sm-12">
 				<div class="scroll">
 					<?php
-						for($i=0;$i<5;$i++){
-							echo
-							'<div class="form-group">
-								<label>Created by ...</label>
-								<br>
-								<p>On Saturday, 15 June 2019</p>
-							</div>';
+						if(count($history)>0){
+							foreach ($history as $data) {
+								echo
+									'<div class="form-group">
+										<label>Created by '.$data->NAME.'</label>
+										<br>
+										<p>On '.date('d F Y',strtotime($data->CREATED_DATE)).'</p>
+									</div>';
+							}
 						}
+						// for($i=0;$i<5;$i++){
+						// 	echo
+						// 	'<div class="form-group">
+						// 		<label>Created by ...</label>
+						// 		<br>
+						// 		<p>On Saturday, 15 June 2019</p>
+						// 	</div>';
+						// }
 					?>
 				</div>
 			</div>
@@ -182,7 +192,4 @@
 	</form>
 </div>
 <script type="text/javascript">
-	function rejectForm(id) {
-		// body...
-	}
 </script>

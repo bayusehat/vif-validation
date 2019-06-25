@@ -116,6 +116,7 @@ class Form extends CI_Controller {
 		$data['form'] = $this->Form_Model->getDataForm($FORM_ID);
 		$data['detail'] = $this->Form_Model->getDetailForm($FORM_ID);
 		$data['attachment'] = $this->Form_Model->getAttachment($FORM_ID);
+		$data['history'] = $this->Form_Model->getHistoryForm($FORM_ID);
 		$this->load->view('layout', $data);
 	}
 

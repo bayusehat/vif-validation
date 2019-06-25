@@ -71,6 +71,8 @@
                 	field: "STAGE",
                 	title: "STAGE"
                 },{
+                	template:
+                	"<div class='label label-danger'>#: data.STATUS #</div>",
                 	field: "STATUS",
                 	title: "STATUS"
                 }]
