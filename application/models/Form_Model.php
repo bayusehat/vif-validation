@@ -67,6 +67,25 @@ class Form_Model extends CI_Model {
 		}
 	}
 
+	public function verifyForm($FORM_ID)
+	{
+		$data = array(
+			'STATUS' => 'Verified',
+		);
+
+		$verified = $this->db->where('FORM_ID',$FORM_ID)
+				->update('form', $data);
+
+		if($verified){
+			setHistoryForm($FORM_ID,'Verified',$this->input->post('notes'),'1');
+			helper_log('verify','Verified','Verify form success '.$FORM_ID);
+			return TRUE;
+		}else{
+			helper_log('verify','Not Verified','Verify form failed '.$FORM_ID);
+			return FALSE;
+		}
+	}
+
 	public function deleteForm($FORM_ID)
 	{
 		$this->db->where('FORM_ID', $FORM_ID)
@@ -110,7 +129,7 @@ class Form_Model extends CI_Model {
 						->join('user','history.APPROVER=user.USER_ID','inner')
 						->join('employee','employee.EMPLOOYEEID=user.EMPLOOYEEID','left')
 						->where('history.FORM_ID',$FORM_ID)
-						->order_by('history.HISTORY_ID','DESC')
+						->order_by('history.HISTORY_ID','ASC')
 						->get()
 						->result();
 	}

@@ -127,6 +127,23 @@ class Form extends CI_Controller {
 		echo json_encode($data);	
 	}
 
+	public function verifyForm($FORM_ID)
+	{
+		$this->islogged();
+		if($this->Form_Model->verifyForm($FORM_ID)){
+			$data = array(
+				'msg' => 'Form Verified',
+				'valid' => true
+				);
+		}else{
+			$data = array(
+				'msg' => 'Form Not Verified',
+				'valid' => false
+				);
+		}
+		echo json_encode($data);
+	}
+
 	public function getRejectedForms()
 	{
 		$this->islogged();

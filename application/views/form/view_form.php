@@ -85,9 +85,9 @@
 							foreach ($history as $data) {
 								echo
 									'<div class="form-group">
-										<label>Created by '.$data->NAME.'</label>
+										<label>'.$data->HISTORY_STATUS.' by '.$data->NAME.'</label>
 										<br>
-										<p>On '.date('d F Y',strtotime($data->CREATED_DATE)).'</p>
+										<p>On '.date('d F Y H:i',strtotime($data->CREATED_DATE)).'</p>
 									</div>';
 							}
 						}
@@ -179,17 +179,30 @@
 		<div class="row">
 			<div class="col-md-5 col-sm-12">
 				<label>Notes</label>
-				<textarea class="form-control" name="notes"></textarea>
+				<textarea class="form-control" name="notes" id="notes"></textarea>
 			</div>
 		</div>
 	<br>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
-				<button type="submit" class="btn btn-success btn-lg" id="btnSendForm"><i class="fa fa-paper-plane"></i> Verify</button>
+				<button type="submit" class="btn btn-success btn-lg" id="btnSendForm" onclick="verifyForm(event,<?= $form->FORM_ID;?>);"><i class="fa fa-paper-plane"></i> Verify</button>
 				<button type="submit" class="btn btn-danger btn-lg" id="btnRejectedForm"><i class="fa fa-times"></i> Reject</button>
 			</div>
 		</div>
 	</form>
 </div>
 <script type="text/javascript">
+	function verifyForm(event,id) {
+		event.preventDefault();
+		var form = $("#formVerify").closest("form");
+		var formData = $("#notes").val();
+			swal_confirm(function(){
+				viewModel.ajaxPost(base_url+"form/verifyForm/"+id,formData,function(res){
+						swal_success(res.msg);
+						setTimeout(function(){
+							window.location = base_url+"form/verifiedForms";
+				},1000);
+			});
+		})		
+	}
 </script>
