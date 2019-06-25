@@ -215,7 +215,7 @@
 		</form> -->
 		<ul class="nav menu">
 			<li><a href="<?= base_url();?>"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> All Forms</a></li>
+			<li><a href="<?= base_url();?>form"><em class="fa fa-wpforms">&nbsp;</em> Forms</a></li>
 			<li><a href="<?= base_url();?>form/verifiedForms"><em class="fa fa-check">&nbsp;</em> Verified Forms</a></li>
 			<li><a href="#"><em class="fa fa-pencil">&nbsp;</em> Revision Forms</a></li>
 			<li><a href="<?= base_url();?>form/rejectedForms"><em class="fa fa-window-close">&nbsp;</em> Rejected Forms</a></li>
