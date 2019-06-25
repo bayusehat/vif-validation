@@ -182,4 +182,7 @@
 	</form>
 </div>
 <script type="text/javascript">
+	function rejectForm(id) {
+		// body...
+	}
 </script>

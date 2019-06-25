@@ -103,6 +103,13 @@ class Form_Model extends CI_Model {
 						->result();
 	}
 
+	public function getFormStatus($status)
+	{
+		return $this->db->where('STATUS', $status)
+						->get('form')
+						->result();
+	}
+
 }
 
 /* End of file Form_Model.php */
