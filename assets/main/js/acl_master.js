@@ -640,10 +640,221 @@ aclMaster.deleteAccess = function(e,id,uid) {
     })
 }
 
+aclMaster.newUser = function() {
+    return {
+        USER_ID : "",
+        EMPLOOYEEID : "",
+        EMAIL : "",
+        PASSWORD : "",
+        ENABLE_USER : 0,
+        CREATED_DATE : "",
+        MODIFIED_DATE : "",
+    }
+}
+aclMaster.fUser = ko.mapping.fromJS(aclMaster.newUser())
+aclMaster.dataUser = ko.observableArray([])
+aclMaster.dataEmployee = ko.observableArray([])
+aclMaster.newUserGroups = {
+    ASIGN_TO_GROUP: 0,
+    GROUP_ID: "",
+    USER_ID: "",
+}
+
+aclMaster.addUser = function() {
+    ko.mapping.fromJS(aclMaster.newUser(), aclMaster.fUser)
+    aclMaster.generateGridUserGroups([newUserGroups])
+    $("#modalUser").modal("show")
+}
+
+aclMaster.generateGridUserGroups = function(dataJson) {
+    column = [
+        {
+            field: "GROUP_ID",
+            title: "Group",
+            attributes: { style: "text-align: center;" },
+            width: 50,
+            headerAttributes: { style: "text-align: center;" },
+        },
+        {
+            field: "ASIGN_TO_GROUP",
+            title: "Email",
+            width: 200,
+            headerAttributes: { style: "text-align: center;" },
+        }
+    ]
+    column.push(
+        {
+            title : "Action",
+            width : 100,
+            headerAttributes: { style: "text-align: center;" },
+            attributes: { style: "text-align: center;" },
+            template : function(e) {
+                btnDelete = ""
+                hrefDelete = "javascript:void(0)"
+                disableDelete = "disabled"
+                if (!_.find(aclMaster.dataUser(),function(f) {return f.PARENT_ID == e.USER_ID })) {
+                    hrefDelete = 'javascript:aclMaster.deleteUser(this,'+e.USER_ID+',\''+e.uid+'\')'
+                    disableDelete = ""
+                }
+                if (true) {
+                    btnDelete = '<a class="btn btn-danger btn-sm btn-action" href="'+hrefDelete+'" '+disableDelete+'>Delete</a>'
+                }
+                return  '<a class="btn btn-primary btn-sm btn-action" href="javascript:aclMaster.editUser(this,'+e.USER_ID+',\''+e.uid+'\')">Edit</a>' + 
+                        btnDelete
+            }
+        }
+    )
+    $("#gridUserGroups").html("")
+    $("#gridUserGroups").kendoGrid({
+        dataSource: {
+            data: dataJson,
+        },
+        sortable: true,
+        filterable: false,
+        scrollable: true,
+        columns: column,
+    })
+}
+
+aclMaster.getDataEmployee = function() {
+    viewModel.ajaxPost(base_url + "aclmaster/getdataemployee", {}, function(res) {
+        aclMaster.dataEmployee(res)
+    })
+}
+
+aclMaster.getDataUser = function() {
+    viewModel.ajaxPost(base_url + "aclmaster/getdatausers", {}, function(res) {
+        aclMaster.dataUser(res)
+        aclMaster.generateUser(res);
+    })
+}
+
+aclMaster.generateUser = function(dataJson) {
+    column = [
+        {
+            field: "EMPLOOYEEID",
+            title: "Employee Id",
+            attributes: { style: "text-align: center;" },
+            width: 50,
+            headerAttributes: { style: "text-align: center;" },
+        },
+        {
+            field: "NAME",
+            title: "Employee Name",
+            // attributes: { style: "text-align: center;" },
+            width: 200,
+            headerAttributes: { style: "text-align: center;" },
+        },
+        {
+            field: "EMAIL",
+            title: "Email",
+            width: 200,
+            headerAttributes: { style: "text-align: center;" },
+        },
+        {
+            field: "CREATED_DATE",
+            title: "Created Date",
+            width: 100,
+            headerAttributes: { style: "text-align: center;" },
+            attributes: { style: "text-align: center;" },
+            template : function(e) {
+                return moment(e.CREATED_DATE).format("DD-MMM-YYYY HH:mm:ss")
+            }
+        },
+        {
+            field: "MODIFIED_DATE",
+            title: "Modified Date",
+            width: 100,
+            headerAttributes: { style: "text-align: center;" },
+            attributes: { style: "text-align: center;" },
+            template : function(e) {
+                return moment(e.MODIFIED_DATE).format("DD-MMM-YYYY HH:mm:ss")
+            }
+        },
+    ]
+    column.push(
+        {
+            title : "Action",
+            width : 100,
+            headerAttributes: { style: "text-align: center;" },
+            attributes: { style: "text-align: center;" },
+            template : function(e) {
+                btnDelete = ""
+                hrefDelete = "javascript:void(0)"
+                disableDelete = "disabled"
+                if (!_.find(aclMaster.dataUser(),function(f) {return f.PARENT_ID == e.USER_ID })) {
+                    hrefDelete = 'javascript:aclMaster.deleteUser(this,'+e.USER_ID+',\''+e.uid+'\')'
+                    disableDelete = ""
+                }
+                if (true) {
+                    btnDelete = '<a class="btn btn-danger btn-sm btn-action" href="'+hrefDelete+'" '+disableDelete+'>Delete</a>'
+                }
+                return  '<a class="btn btn-primary btn-sm btn-action" href="javascript:aclMaster.editUser(this,'+e.USER_ID+',\''+e.uid+'\')">Edit</a>' + 
+                        btnDelete
+            }
+        }
+    )
+    $("#gridUser").html("")
+    $("#gridUser").kendoGrid({
+        dataSource: {
+            data: dataJson,
+        },
+        sortable: true,
+        filterable: false,
+        scrollable: true,
+        columns: column,
+    })
+}
+
+aclMaster.editUser = function(e,id,uid) {
+    dt = _.find(aclMaster.dataUser(), function(e) {
+        return e.User_ID == id
+    })
+    delete dt.id
+    delete dt.parentId
+    ko.mapping.fromJS(dt, aclMaster.fUser)
+    $("#modalUser").modal("show")
+}
+
+aclMaster.saveUser = function() {
+    dt = ko.mapping.toJS(aclMaster.fUser)
+    dt.PARENT_ID = dt.PARENT_ID == "" ? null : dt.PARENT_ID
+    dt.User_ICON = dt.User_ICON == "" ? "home" : dt.User_ICON
+    dt.User_URL = dt.User_URL == "" ? "#" : dt.User_URL
+    param = {
+        data : dt
+    }
+
+    if (aclMaster.validateForm("#modalUser")) {
+        viewModel.ajaxPost(base_url + "aclmaster/saveUser", param, function(res) {
+            if (res.status) {
+                swal_success("Data Saved")
+                $("#modalUser").modal("hide")
+                aclMaster.getDataUser()
+            }else{
+                swal_failed(res.message)
+            }
+        }, function(err) {
+            swal_failed(err.responseText);
+        })
+    }
+}
+
+aclMaster.deleteUser = function(e,id,uid) {
+    swal_confirm_delete(function() {
+        param = {
+            "User_ID" : id,
+        }
+        url = base_url + "aclmaster/deleteUser"
+        aclMaster.doDelete(url,param, aclMaster.getDataUser)
+    })
+}
+
+
 $(function() {
-    // $(".modal").attr("data-backdrop","static")
-    // $(".modal").attr("data-keyboard",false)
     aclMaster.getDataBranch()
     aclMaster.getDataGroups()
     aclMaster.getDataAccess()
+    aclMaster.getDataEmployee()
+    aclMaster.getDataUser()
 })

@@ -87,7 +87,8 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                     <div class="tab-pane fade" id="tab4">
                         <div class="row">
                             <div class="col-md-12 mgb-10">
-                                <button class="btn btn-sm btn-success pull-right">Add User</button>
+                                <button onclick="aclMaster.addUser()" 
+                                        class="btn btn-sm btn-success pull-right">Add User</button>
                             </div>
                             <div class="col-md-12">
                                 <div class="custom-grid" id="gridUser"></div>
@@ -385,6 +386,74 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
 
             <div class="modal-footer">
                 <button class="btn btn-success" data-bind="click: aclMaster.saveAccessGroups">Sumbit</button>
+                <!-- <button type="button" class="btn btn-default"
+                data-dismiss="modal">Close</button> -->
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div
+    id="modalUser"
+    class="modal fade"
+    role="dialog"
+    data-bind="with:aclMaster"
+    data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">User</h4>
+            </div>
+            <div class="modal-body" data-bind="with:fUser">
+                <div class="row">
+                    <div class="col-sm-12 mgb-10">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="group_title">Employee</label>
+                            <div class="col-sm-8">
+                                <input
+                                    style="width:100%"
+                                    type="text"
+                                    name="Employee"
+                                    class="form-control input-form"
+                                    placeholder="Employee"
+                                    required="required"
+                                    id="group_title"
+                                    data-bind="kendoDropDownList: { data: aclMaster.dataEmployee, dataTextField : 'NAME', dataValueField : 'EMPLOOYEEID' , value: EMPLOOYEEID, optionLabel: 'Select Employee' }">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mgb-10">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="enable_Access">Enable User</label>
+                            <div class="col-sm-8">
+                                <input
+                                    name="Access Status"
+                                    style="width:100%"
+                                    class="form-control input-form"
+                                    id="enable_Access"
+                                    required="required"
+                                    data-bind="kendoDropDownList: { data: viewModel.ddlStatus, dataTextField : 'text', dataValueField : 'value' , value: ENABLE_USER }">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mgb-10">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="enable_Access">User Groups</label>
+                            <div class="col-sm-8">
+                                <button class="btn btn-sm btn-primary">Add Group</button>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="custom-grid" id="gridUserGroups"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-success" data-bind="click: aclMaster.saveUser">Sumbit</button>
                 <!-- <button type="button" class="btn btn-default"
                 data-dismiss="modal">Close</button> -->
             </div>

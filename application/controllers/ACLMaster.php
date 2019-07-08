@@ -128,6 +128,20 @@ class ACLMaster extends CI_Controller {
 		$data = $this->ACL_Model->GetJoinAccessGroups($group_id);
 		echo json_encode($data);
 	}
+
+	public function GetDataUsers()
+	{
+		$this->isLogged();
+		$data = $this->ACL_Model->GetUsers();
+		echo json_encode($data);
+	}
+
+	public function GetDataEmployee()
+	{
+		$this->isLogged();
+		$data = $this->db->get('employee')->result();
+		echo json_encode($data);
+	}
 }
 
 /* End of file ACLMaster.php */

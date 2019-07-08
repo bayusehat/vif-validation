@@ -61,6 +61,8 @@
 	<script src="<?= base_url();?>assets/js/knockout.mapping-latest.js"></script>
 	<script src="<?= base_url();?>assets/js/knockout-kendo.min.js"></script>
 	<!--===============================================================================================-->
+	<script src="<?= base_url();?>assets/js/moment.js"></script>
+	<!--===============================================================================================-->
 
 
 	<script type='text/javascript' src="<?= base_url();?>assets/js/layout.js"></script>

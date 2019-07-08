@@ -44,6 +44,23 @@ class ACL_Model extends CI_Model {
 		return $data;
 	}
 
+	public function GetUsers()
+	{
+		$dataUserQuery = $this->db->from('user')
+								  ->join('employee', 'user.EMPLOOYEEID = employee.EMPLOOYEEID')
+								  ->get();
+		$dataUser = $dataUserQuery->result();
+		$dataUserGroup = array();
+		foreach ($dataUser as $key => $user) {			
+			$userGroupQuery = $this->db->where('USER_ID', $user->USER_ID);
+			$userGroupQuery = $userGroupQuery->get('user_groups');
+			$dataUserGroup = $userGroupQuery->result();
+			$user->user_groups = $dataUserGroup;
+		}
+		// var_dump($dataUser);
+		return $dataUser;
+	}
+
 	public function GetJoinAccessGroups($group_id)
 	{
 		$this->db->select('*, PARENT_ID as parentId, ACCESS_ID as id');
