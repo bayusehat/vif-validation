@@ -20,6 +20,10 @@ class Login extends CI_Controller {
 		if($this->session->userdata('login') == TRUE){
 			$data['title'] = 'Dashboard';
 			$data['main_view'] = 'dashboard';
+			$data['all_form'] = count($this->m_main->qryCount("SELECT * FROM form"));
+			$data['verified_form']= count($this->m_main->qryCount("SELECT * FROM form WHERE STATUS='Verified'"));
+			$data['rejected_form']= count($this->m_main->qryCount("SELECT * FROM form WHERE STATUS='Rejected'"));
+			$data['all_user'] = count($this->m_main->qryCount("SELECT * FROM user"));
 			$this->load->view('layout', $data);
 		}else{
 			$this->load->view('logins');

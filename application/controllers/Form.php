@@ -22,7 +22,22 @@ class Form extends CI_Controller {
 		$this->islogged();
 		$data['title'] = 'Data Form';
 		$data['main_view'] = 'form/data_form';
-		$data['forms'] = $this->Form_Model->getForm();
+		$this->load->view('layout', $data);
+	}
+
+	public function verifiedForms()
+	{
+		$this->islogged();
+		$data['title'] = 'Data Verified Form';
+		$data['main_view'] = 'form/verified_form';
+		$this->load->view('layout', $data);
+	}
+
+	public function rejectedForms()
+	{
+		$this->islogged();
+		$data['title'] = 'Data Rejected Form';
+		$data['main_view'] = 'form/rejected_form';
 		$this->load->view('layout', $data);
 	}
 
@@ -101,7 +116,39 @@ class Form extends CI_Controller {
 		$data['form'] = $this->Form_Model->getDataForm($FORM_ID);
 		$data['detail'] = $this->Form_Model->getDetailForm($FORM_ID);
 		$data['attachment'] = $this->Form_Model->getAttachment($FORM_ID);
+		$data['history'] = $this->Form_Model->getHistoryForm($FORM_ID);
 		$this->load->view('layout', $data);
+	}
+
+	public function getVerifiedForms()
+	{
+		$this->islogged();
+		$data = $this->Form_Model->getFormStatus('Verified');
+		echo json_encode($data);	
+	}
+
+	public function verifyForm($FORM_ID)
+	{
+		$this->islogged();
+		if($this->Form_Model->verifyForm($FORM_ID)){
+			$data = array(
+				'msg' => 'Form Verified',
+				'valid' => true
+				);
+		}else{
+			$data = array(
+				'msg' => 'Form Not Verified',
+				'valid' => false
+				);
+		}
+		echo json_encode($data);
+	}
+
+	public function getRejectedForms()
+	{
+		$this->islogged();
+		$data = $this->Form_Model->getFormStatus('Rejected');
+		echo json_encode($data);	
 	}
 }
 

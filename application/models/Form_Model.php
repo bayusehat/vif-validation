@@ -57,12 +57,31 @@ class Form_Model extends CI_Model {
 		$this->db->insert_batch('detail', $form_detail);
 		$this->db->update('form',array('TOTAL_AMOUNT' => $total),array('FORM_ID'=>$id));
 
-		//helper_log($log_action="",$log_status="",$log_message="") TO USER HELPER LOG
 		if($this->db->affected_rows()>0){
 			helper_log('insert','Open','Send new form success '.$id);
+			setHistoryForm($id,'Open',$subject,'1');
 			return $id;
 		}else{
 			helper_log('insert',false,'Send new form failed');
+			return FALSE;
+		}
+	}
+
+	public function verifyForm($FORM_ID)
+	{
+		$data = array(
+			'STATUS' => 'Verified',
+		);
+
+		$verified = $this->db->where('FORM_ID',$FORM_ID)
+				->update('form', $data);
+
+		if($verified){
+			setHistoryForm($FORM_ID,'Verified',$this->input->post('notes'),'1');
+			helper_log('verify','Verified','Verify form success '.$FORM_ID);
+			return TRUE;
+		}else{
+			helper_log('verify','Not Verified','Verify form failed '.$FORM_ID);
 			return FALSE;
 		}
 	}
@@ -101,6 +120,30 @@ class Form_Model extends CI_Model {
 		return $this->db->where('FORM_ID',$FORM_ID)
 						->get('attachment')
 						->result();
+	}
+
+	public function getHistoryForm($FORM_ID)
+	{
+		return $this->db->select('history.*,user.USER_ID,employee.NAME')
+						->from('history')
+						->join('user','history.APPROVER=user.USER_ID','inner')
+						->join('employee','employee.EMPLOOYEEID=user.EMPLOOYEEID','left')
+						->where('history.FORM_ID',$FORM_ID)
+						->order_by('history.HISTORY_ID','ASC')
+						->get()
+						->result();
+	}
+
+	public function getFormStatus($status)
+	{
+		return $this->db->where('STATUS', $status)
+						->get('form')
+						->result();
+	}
+
+	public function setHistory($data)
+	{
+		return $this->db->insert('history', $data);
 	}
 
 }

@@ -95,5 +95,10 @@ class M_main extends CI_Model{
 	{
 		return $this->db->get($table)->result();
 	}
+
+	public function qryCount($query)
+	{
+		return $this->db->query($query)->result();
+	}
 	
 }
