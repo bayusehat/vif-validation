@@ -67,7 +67,7 @@
 							<tbody id="amountDetail">
 								<tr>
 									<td>
-										<select class="form-control code" name="code[]">
+										<select class="form-control code" name="code[]" required="">
 											<?php
 												foreach ($datacode as $data) { ?>
 												    <option value="<?= $data->CODE_ID;?>"><?= $data->NAME.' - '.$data->DESCRIPTION;?></option>
@@ -80,7 +80,7 @@
 											<span class="input-group-btn">
                                                 <a class="btn btn-default" type="button"><i class="fa fa-calendar"></i></a>
                                             </span>
-											<input type="text" name="duedate[]" placeholder="duedate" class="form-control dates">
+											<input type="text" name="duedate[]" placeholder="duedate" class="form-control dates" required="">
 										</div>
 									</td>
 									<td>
@@ -88,7 +88,7 @@
 											<span class="input-group-btn">
                                                 <a class="btn btn-default currency" type="button">Rp</a>
                                             </span>
-											<input type="text" name="amount[]" placeholder="0" class="form-control amount" onkeyup="amountChange()">
+											<input type="text" name="amount[]" placeholder="0" class="form-control amount" onkeyup="amountChange()" required="">
 										</div>
 									</td>
 									<td><button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-trash"></i></button></td>
@@ -247,7 +247,7 @@
     });
 
  	// var validator = $("#formApplication").kendoValidator().data("kendoValidator");
-	$("#btnSendForm").click(function(event) {
+	$("#formApplication").submit(function(event) {
 		event.preventDefault();
 		var form = $("#formApplication").closest("form");
 		var formData = new FormData(form[0]);
