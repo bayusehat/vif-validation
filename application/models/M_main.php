@@ -8,9 +8,13 @@ class M_main extends CI_Model{
 
 	public function get_row($username,$password)
 	{
-		return $this->db->select('user.*,employee.NAME')
+		return $this->db->select('*')
 						->from('user')
 						->join('employee','employee.EMPLOOYEEID=user.EMPLOOYEEID')
+						->join('user_groups','user_groups.USER_ID=user.USER_ID')
+						->join('groups','groups.GROUP_ID=user_groups.GROUP_ID')
+						->join('groups_branch','groups_branch.GROUP_ID=groups.GROUP_ID')
+						->join('branch','branch.ID_BRANCH=groups_branch.ID_BRANCH')
 						->where('user.EMAIL',$username)
 						->where('user.PASSWORD',$password)
 						->get();
@@ -64,7 +68,8 @@ class M_main extends CI_Model{
 				'token' =>  $data['token'],
 				'exp' => $data['exp'],
 				'ip_address' => $_SERVER['REMOTE_ADDR'],
-				'id' => $data['id']
+				'id' => $data['id'],
+				'branch' => $data['branch']
 			);
 			$this->session->set_userdata($userdata);
 			$insert_session = array(

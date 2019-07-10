@@ -29,7 +29,8 @@ class Form_Model extends CI_Model {
 			'ACCOUNT_NUMBER' => $account_number,
 			'ACCOUNT_NAME' => $account_name,
 			'STAGE' => '123',
-			'STATUS' => 'Open' 
+			'STATUS' => 'Open',
+			'CREATE_FOR_BRANCH' => $this->session->userdata('branch') 
 		);
 
 		$this->db->insert('form', $form);
@@ -100,8 +101,11 @@ class Form_Model extends CI_Model {
 
 	public function getDataForm($FORM_ID)
 	{
-		return $this->db->where('FORM_ID', $FORM_ID)
-						->get('form')
+		return $this->db->select('form.*,branch.BRANCH_TITLE')
+						->from('form')
+						->join('branch','branch.ID_BRANCH=form.CREATE_FOR_BRANCH')
+						->where('FORM_ID', $FORM_ID)
+						->get()
 						->row();
 	}
 

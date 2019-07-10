@@ -158,11 +158,11 @@ class ACL_Model extends CI_Model {
 		$data = $this->input->post("data");
 		$data_join = $this->input->post("data_join");
 
-		dateNow = date("Y-m-d H:i:s");
+		$dateNow = date("Y-m-d H:i:s");
 
 		$data["PASSWORD"] =  $data["PASSWORD"] == "" ? sha1("Hallo123#") : $data["PASSWORD"];
-		$data["CREATED_DATE"] =  $data["CREATED_DATE"] == "" ? dateNow : $data["CREATED_DATE"];
-		$data["MODIFIED_DATE"] =  dateNow
+		$data["CREATED_DATE"] =  $data["CREATED_DATE"] == "" ? $dateNow : $data["CREATED_DATE"];
+		$data["MODIFIED_DATE"] =  $dateNow;
 
 		$insert = $this->SaveData("user","USER_ID", $data);
 		if ($insert->status) {

@@ -38,10 +38,8 @@
 	<div class="panel panel-container">
 		<div class="row">
 			<div class="col-md-6 col-sm-12 no-padding">
-				
 			</div>
 			<div class="col-md-6 col-sm-12 no-padding">
-				
 			</div>
 		</div>
 	</div>

@@ -35,7 +35,8 @@ class Auth extends BD_Controller {
             $output['token'] = JWT::encode($token,$kunci);
             $output['exp'] = $date->getTimestamp();
             $output['id'] = $check->row()->USER_ID;
-            $output['username'] = $check->row()->NAME;  
+            $output['username'] = $check->row()->NAME;
+            $output['branch'] = $check->row()->ASIGN_TO_GROUP;  
             $this->set_response($output, REST_Controller::HTTP_OK); 
         }
         else {
