@@ -18,6 +18,7 @@ class Form_Model extends CI_Model {
 		$bank = $this->input->post('bank');
 		$account_number = $this->input->post('account_number');
 		$account_name = $this->input->post('account_name');
+		$send_to = $this->input->post('branch');
 
 		$form = array(
 			'SUBJECT' => $subject,
@@ -30,7 +31,6 @@ class Form_Model extends CI_Model {
 			'ACCOUNT_NAME' => $account_name,
 			'STAGE' => '123',
 			'STATUS' => 'Open',
-			'CREATE_FOR_BRANCH' => $this->session->userdata('branch') 
 		);
 
 		$this->db->insert('form', $form);

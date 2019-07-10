@@ -17,7 +17,8 @@
 			<div class="col-md-4 col-sm-12">
 				<div class="form-group">
 					<label>Branch</label>
-					<div class="label label-primary"><?= $form->BRANCH_TITLE;?></div>
+					<br>
+					<div class="label label-info"><?= $form->BRANCH_TITLE;?></div>
 				</div>
 				<div class="form-group">
 					<label>Status</label>
