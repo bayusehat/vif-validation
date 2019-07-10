@@ -87,6 +87,7 @@ class ACLMaster extends CI_Controller {
 
 		$this->ACL_Model->UpdateAssosiationTable("GROUP_ID", $id, "groups_branch", array());
 		$this->ACL_Model->UpdateAssosiationTable("GROUP_ID", $id, "access_groups", array());
+		$this->ACL_Model->UpdateAssosiationTable("GROUP_ID", $id, "user_groups", array());
 		$delete = $this->ACL_Model->DeleteData("groups","GROUP_ID", $id);
 		$result = setResultInfo($delete->status,$delete->message, $data);
 		echo json_encode($result);
@@ -141,6 +142,27 @@ class ACLMaster extends CI_Controller {
 		$this->isLogged();
 		$data = $this->db->get('employee')->result();
 		echo json_encode($data);
+	}
+
+	public function SaveUser()
+	{
+		$this->isLogged();
+		$data = null;
+		$insert = $this->ACL_Model->SaveUser();
+		$result = setResultInfo($insert->status,$insert->message, $data);
+		echo json_encode($result);
+	}
+
+	public function DeleteUser()
+	{
+		$this->isLogged();
+		$data = null;
+		$id = $this->input->post("USER_ID");
+
+		$this->ACL_Model->UpdateAssosiationTable("USER_ID", $id, "user_groups", array());
+		$delete = $this->ACL_Model->DeleteData("user","USER_ID", $id);
+		$result = setResultInfo($delete->status,$delete->message, $data);
+		echo json_encode($result);
 	}
 }
 

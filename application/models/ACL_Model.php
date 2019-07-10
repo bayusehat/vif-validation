@@ -140,6 +140,8 @@ class ACL_Model extends CI_Model {
 				}
 			}
 			$this->UpdateAssosiationTable("GROUP_ID", $insert->id,"groups_branch",$saveJoinData);
+			$this->UpdateAssosiationTable("GROUP_ID", $insert->id,"user_groups",$data_join);
+			$this->UpdateAssosiationTable("GROUP_ID", $insert->id,"access_groups",$data_join);
 		}
 
 		return $insert;
@@ -149,6 +151,28 @@ class ACL_Model extends CI_Model {
 	{
 		$saveJoinData = $this->input->post("data");
 		return $this->UpdateAssosiationTable("GROUP_ID", $saveJoinData[0]["GROUP_ID"],"access_groups",$saveJoinData);
+	}
+
+	public function SaveUser()
+	{
+		$data = $this->input->post("data");
+		$data_join = $this->input->post("data_join");
+
+		dateNow = date("Y-m-d H:i:s");
+
+		$data["PASSWORD"] =  $data["PASSWORD"] == "" ? sha1("Hallo123#") : $data["PASSWORD"];
+		$data["CREATED_DATE"] =  $data["CREATED_DATE"] == "" ? dateNow : $data["CREATED_DATE"];
+		$data["MODIFIED_DATE"] =  dateNow
+
+		$insert = $this->SaveData("user","USER_ID", $data);
+		if ($insert->status) {
+			foreach ($data_join as $key => $dt) {
+				$data_join[$key]["USER_ID"] = $insert->id;
+			}
+			$this->UpdateAssosiationTable("USER_ID", $insert->id,"user_groups",$data_join);
+		}
+
+		return $insert;
 	}
 
 	public function UpdateAssosiationTable($init_id_field, $main_id, $table_name, $data)

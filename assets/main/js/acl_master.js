@@ -448,94 +448,7 @@ aclMaster.generateAccess = function(dataJson) {
             title: "Menu",
             width: 200,
             headerAttributes: { style: "text-align: center;" },
-            // attributes: { style: "text-align: left;" },
         },
-        /*{
-            field: "view",
-            title: "View",
-            width: 60,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "view")
-                return "<input onclick='role.checkView(\"check-value-view-par-" + e.id + "\");' parId='check-value-view-par-" + e.parentId + "' id='check-value-view-par-" + e.id + "' class='rolecheck-value-view' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        },
-        {
-            field: "add",
-            title: "Add",
-            width: 60,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "add")
-                return "<input onclick='role.checkAdd(\"check-value-add-par-" + e.id + "\");' parId='check-value-add-par-" + e.parentId + "' id='check-value-add-par-" + e.id + "' class='rolecheck-value-add' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        },
-        {
-            field: "edit",
-            title: "Edit",
-            width: 60,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "edit")
-                return "<input onclick='role.checkEdit(\"check-value-edit-par-" + e.id + "\");' parId='check-value-edit-par-" + e.parentId + "' id='check-value-edit-par-" + e.id + "' class='rolecheck-value-edit' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        },
-        {
-            field: "del",
-            title: "Delete",
-            width: 60,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "del")
-                return "<input onclick='role.checkDelete(\"check-value-del-par-" + e.id + "\");' parId='check-value-del-par-" + e.parentId + "' id='check-value-del-par-" + e.id + "' class='rolecheck-value-del' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        }, {
-            field: "request",
-            title: "Request Approval",
-            width: 80,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "request")
-                return "<input onclick='role.checkRequest(\"check-value-request-par-" + e.id + "\");' parId='check-value-request-par-" + e.parentId + "' id='check-value-request-par-" + e.id + "' class='rolecheck-value-request' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        },
-        {
-            field: "approve",
-            title: "Approve",
-            width: 60,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "approve")
-                return "<input onclick='role.checkApprove(\"check-value-approve-par-" + e.id + "\");' parId='check-value-approve-par-" + e.parentId + "' id='check-value-approve-par-" + e.id + "' class='rolecheck-value-approve' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        }, {
-            field: "download",
-            title: "Download/Print",
-            width: 80,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "download")
-                return "<input onclick='role.checkDownload(\"check-value-download-par-" + e.id + "\");' parId='check-value-download-par-" + e.parentId + "' id='check-value-download-par-" + e.id + "' class='rolecheck-value-download' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        },
-        {
-            field: "upload",
-            title: "Upload",
-            width: 60,
-            headerAttributes: { style: "text-align: center;" },
-            template: function(e) {
-                var check = CheckAction(e, "upload")
-                return "<input onclick='role.checkUpload(\"check-value-upload-par-" + e.id + "\");' parId='check-value-upload-par-" + e.parentId + "' id='check-value-upload-par-" + e.id + "' class='rolecheck-value-upload' type='checkbox' " + check.checked + " " + check.disabled + ">"
-            },
-            attributes: { style: "text-align: center;" }
-        }*/
     ]
     column.push(
         {
@@ -561,19 +474,7 @@ aclMaster.generateAccess = function(dataJson) {
     )
     $("#listAccess").html("")
     $("#listAccess").kendoTreeList({
-        // height: 350,
         dataSource: dataJson,
-        // schema: {
-        //     model: {
-        //         id: "id",
-        //         parentId: "parentId",
-        //         fields: {
-        //             parentId: { field: "PARENT_ID",  nullable: true },
-        //             id: { field: "ACCESS_ID", type: "number" },
-        //         },
-        //         expanded: true
-        //     }
-        // },
         columns: column,
         dataBound :function(e) {
             // console.log("E", e);
@@ -654,15 +555,24 @@ aclMaster.newUser = function() {
 aclMaster.fUser = ko.mapping.fromJS(aclMaster.newUser())
 aclMaster.dataUser = ko.observableArray([])
 aclMaster.dataEmployee = ko.observableArray([])
-aclMaster.newUserGroups = {
-    ASIGN_TO_GROUP: 0,
-    GROUP_ID: "",
-    USER_ID: "",
+aclMaster.newUserGroups = function() {
+    return {
+        ASIGN_TO_GROUP: 0,
+        GROUP_ID: "",
+        USER_ID: "",
+    }
 }
+
+aclMaster.fUser.EMPLOOYEEID.subscribe(function(e) {
+    dt = _.find(aclMaster.dataEmployee(), function(f) {
+        return f.EMPLOOYEEID == e
+    })
+    aclMaster.fUser.EMAIL(dt.EMPLOYEE_EMAIL)
+})
 
 aclMaster.addUser = function() {
     ko.mapping.fromJS(aclMaster.newUser(), aclMaster.fUser)
-    aclMaster.generateGridUserGroups([newUserGroups])
+    aclMaster.generateGridUserGroups([aclMaster.newUserGroups()])
     $("#modalUser").modal("show")
 }
 
@@ -672,35 +582,38 @@ aclMaster.generateGridUserGroups = function(dataJson) {
             field: "GROUP_ID",
             title: "Group",
             attributes: { style: "text-align: center;" },
-            width: 50,
+            width: 100,
             headerAttributes: { style: "text-align: center;" },
+            template : function(e) {
+                return "<input style='width:100%;' class='ddl_group' name='GROUP_ID'>"
+            }
         },
         {
             field: "ASIGN_TO_GROUP",
-            title: "Email",
-            width: 200,
+            title: "Assign to Same Group",
+            width: 100,
             headerAttributes: { style: "text-align: center;" },
+            template : function(e) {
+                return "<input style='width:100%;' class='ddl_asign' name='ASIGN_TO_GROUP'>"
+            }
         }
     ]
     column.push(
         {
             title : "Action",
-            width : 100,
+            width : 50,
             headerAttributes: { style: "text-align: center;" },
             attributes: { style: "text-align: center;" },
             template : function(e) {
                 btnDelete = ""
-                hrefDelete = "javascript:void(0)"
-                disableDelete = "disabled"
-                if (!_.find(aclMaster.dataUser(),function(f) {return f.PARENT_ID == e.USER_ID })) {
-                    hrefDelete = 'javascript:aclMaster.deleteUser(this,'+e.USER_ID+',\''+e.uid+'\')'
+                // if (!_.find(aclMaster.dataUser(),function(f) {return f.PARENT_ID == e.USER_ID })) {
+                    hrefDelete = 'aclMaster.deleteUserGroups(this)'
                     disableDelete = ""
-                }
+                // }
                 if (true) {
-                    btnDelete = '<a class="btn btn-danger btn-sm btn-action" href="'+hrefDelete+'" '+disableDelete+'>Delete</a>'
+                    btnDelete = '<a class="btn btn-danger btn-sm btn-action" href="javascript:void(0)" onclick="'+hrefDelete+'" '+disableDelete+'><i class="fa fa-times"></i></a>'
                 }
-                return  '<a class="btn btn-primary btn-sm btn-action" href="javascript:aclMaster.editUser(this,'+e.USER_ID+',\''+e.uid+'\')">Edit</a>' + 
-                        btnDelete
+                return  btnDelete
             }
         }
     )
@@ -709,11 +622,61 @@ aclMaster.generateGridUserGroups = function(dataJson) {
         dataSource: {
             data: dataJson,
         },
-        sortable: true,
+        sortable: false,
         filterable: false,
         scrollable: true,
         columns: column,
+        dataBound: function(e) {
+            var grid = e.sender;
+            var items = e.sender.items();
+            var no = 0
+            items.each(function(e) {
+                var dataItem = grid.dataItem(this);
+                // var ddt = $(this).find('.ddlpin');
+                var ddt = $(this).find('.ddl_group');
+                $(ddt).kendoDropDownList({
+                    value: dataItem.GROUP_ID,
+                    dataSource: aclMaster.dataGroups(),
+                    dataTextField: "GROUP_TITLE",
+                    dataValueField: "GROUP_ID",
+                    optionLabel: "Please choose..",
+                    filter: 'contains',
+                    change: function(d) {
+                        var grid = $('#gridUserGroups').data('kendoGrid')
+                        var tr = $(ddt).closest("tr");
+                        grid.dataSource.data()[tr.index()].GROUP_ID = d.sender._old
+                    }
+                });
+
+                var ddt = $(this).find('.ddl_asign');
+                $(ddt).kendoDropDownList({
+                    value: dataItem.ASIGN_TO_GROUP,
+                    dataSource: viewModel.ddlStatus(),
+                    dataTextField: "text",
+                    dataValueField: "value",
+                    optionLabel: "Please choose..",
+                    filter: 'contains',
+                    change: function(d) {
+                        var grid = $('#gridUserGroups').data('kendoGrid')
+                        var tr = $(ddt).closest("tr");
+                        grid.dataSource.data()[tr.index()].ASIGN_TO_GROUP = d.sender._old
+                    }
+                });
+            });
+        }
     })
+}
+
+aclMaster.addUserGroups = function() {
+    var grid = $("#gridUserGroups").data("kendoGrid");
+    grid.dataSource.insert(0,aclMaster.newUserGroups())
+}
+aclMaster.deleteUserGroups = function(el) {
+    console.log("THIS", $(el));
+    
+    var grid = $("#gridUserGroups").data("kendoGrid");
+    var tr = (el).closest("tr");
+    grid.removeRow(tr)
 }
 
 aclMaster.getDataEmployee = function() {
@@ -808,8 +771,10 @@ aclMaster.generateUser = function(dataJson) {
 
 aclMaster.editUser = function(e,id,uid) {
     dt = _.find(aclMaster.dataUser(), function(e) {
-        return e.User_ID == id
+        return e.USER_ID == id
     })
+    aclMaster.generateGridUserGroups(dt.user_groups)
+    console.log(dt);
     delete dt.id
     delete dt.parentId
     ko.mapping.fromJS(dt, aclMaster.fUser)
@@ -818,15 +783,32 @@ aclMaster.editUser = function(e,id,uid) {
 
 aclMaster.saveUser = function() {
     dt = ko.mapping.toJS(aclMaster.fUser)
-    dt.PARENT_ID = dt.PARENT_ID == "" ? null : dt.PARENT_ID
-    dt.User_ICON = dt.User_ICON == "" ? "home" : dt.User_ICON
-    dt.User_URL = dt.User_URL == "" ? "#" : dt.User_URL
+    newUserGroups = []
+    dataUsergroups = $("#gridUserGroups").data("kendoGrid").dataSource.data()
+    dataUsergroups.forEach(val => {
+        if (val.GROUP_ID != "") {
+            newUserGroups.push({
+                ASIGN_TO_GROUP: val.ASIGN_TO_GROUP,
+                GROUP_ID: val.GROUP_ID,
+                USER_ID: dt.USER_ID,
+            })
+        }
+    });
     param = {
-        data : dt
+        data : {
+            USER_ID : dt.USER_ID,
+            EMPLOOYEEID : dt.EMPLOOYEEID,
+            EMAIL : dt.EMAIL,
+            PASSWORD : dt.PASSWORD,
+            ENABLE_USER : dt.ENABLE_USER,
+            CREATED_DATE : dt.CREATED_DATE,
+            MODIFIED_DATE : dt.MODIFIED_DATE,
+        },
+        data_join : newUserGroups
     }
 
     if (aclMaster.validateForm("#modalUser")) {
-        viewModel.ajaxPost(base_url + "aclmaster/saveUser", param, function(res) {
+        viewModel.ajaxPost(base_url + "aclmaster/saveuser", param, function(res) {
             if (res.status) {
                 swal_success("Data Saved")
                 $("#modalUser").modal("hide")
@@ -843,9 +825,9 @@ aclMaster.saveUser = function() {
 aclMaster.deleteUser = function(e,id,uid) {
     swal_confirm_delete(function() {
         param = {
-            "User_ID" : id,
+            "USER_ID" : id,
         }
-        url = base_url + "aclmaster/deleteUser"
+        url = base_url + "aclmaster/deleteuser"
         aclMaster.doDelete(url,param, aclMaster.getDataUser)
     })
 }

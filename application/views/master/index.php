@@ -442,9 +442,9 @@ data-target="#test-collapse"><i class="fa fa-align-justify"></i></button> </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="enable_Access">User Groups</label>
                             <div class="col-sm-8">
-                                <button class="btn btn-sm btn-primary">Add Group</button>
+                                <button class="btn btn-sm btn-primary"  onclick="aclMaster.addUserGroups()">Add Group</button>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" style="margin-top:8px;">
                                 <div class="custom-grid" id="gridUserGroups"></div>
                             </div>
                         </div>
