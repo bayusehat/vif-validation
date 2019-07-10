@@ -185,8 +185,12 @@
 	<br>
 		<div class="row">
 			<div class="col-md-6 col-sm-12">
-				<button type="submit" class="btn btn-success btn-lg" id="btnSendForm" onclick="verifyForm(event,<?= $form->FORM_ID;?>);"><i class="fa fa-paper-plane"></i> Verify</button>
-				<button type="submit" class="btn btn-danger btn-lg" id="btnRejectedForm"><i class="fa fa-times"></i> Reject</button>
+				<?php
+				if($form->STATUS != 'Verified' && $form->STATUS != 'Rejected'){ ?>
+					<button type="submit" class="btn btn-success btn-lg" id="btnSendForm" onclick="verifyForm(event,<?= $form->FORM_ID;?>);"><i class="fa fa-paper-plane"></i> Verify</button>
+					<button type="submit" class="btn btn-danger btn-lg" id="btnRejectedForm"><i class="fa fa-times"></i> Reject</button>
+			<?php } ?>
+			
 			</div>
 		</div>
 	</form>
@@ -204,5 +208,9 @@
 				},1000);
 			});
 		})		
+	}
+
+	function rejectedForm(argument) {
+		// body...
 	}
 </script>
