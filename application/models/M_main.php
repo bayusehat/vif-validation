@@ -12,9 +12,9 @@ class M_main extends CI_Model{
 						->from('user')
 						->join('employee','employee.EMPLOOYEEID=user.EMPLOOYEEID')
 						->join('user_groups','user_groups.USER_ID=user.USER_ID')
-						// ->join('groups','groups.GROUP_ID=user_groups.GROUP_ID')
-						// ->join('groups_branch','groups_branch.GROUP_ID=groups.GROUP_ID')
-						// ->join('branch','branch.ID_BRANCH=groups_branch.ID_BRANCH')
+						->join('groups','groups.GROUP_ID=user_groups.GROUP_ID')
+						->join('groups_branch','groups_branch.GROUP_ID=groups.GROUP_ID')
+						->join('branch','branch.ID_BRANCH=groups_branch.ID_BRANCH')
 						->where('user.EMAIL',$username)
 						->where('user.PASSWORD',$password)
 						->get();
