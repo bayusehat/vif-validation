@@ -45,6 +45,7 @@ class Auth extends BD_Controller {
             $output = array(); 
             $output['user']['token'] = JWT::encode($token,$kunci);
             //API
+            $output['user']['exp'] = $date->getTimestamp() + 60*60*5;
             $output['user']['id'] = $check->row()->USER_ID;
             $output['user']['email'] = $u;
             $output['user']['username'] = $check->row()->NAME;

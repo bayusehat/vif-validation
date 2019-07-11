@@ -66,20 +66,20 @@ class M_main extends CI_Model{
 				'username' => $data['user']['username'],
 				'login' => TRUE,
 				'token' =>  $data['user']['token'],
-				// 'exp' => $data['exp'],
+				'exp' => $data['user']['exp'],
 				'ip_address' => $_SERVER['REMOTE_ADDR'],
 				'id' => $data['user']['id'],
 				// 'branch' => $data['branch']
 			);
 			$this->session->set_userdata($userdata);
 			$insert_session = array(
-				'USER_ID' => $data['id'],
+				'USER_ID' => $data['user']['id'],
 				'SESSION_USER' => $username,
 				'SESSION_STATUS' => TRUE,
 				'SESSION_MASSAGE' => 'SESSION',
 				'SESSION_IPADDRESS' => $_SERVER['REMOTE_ADDR'],
-				'SESSION_TOKEN' => $data['token'],
-				'SESSION_EXPIRED' => date('Y-m-d H:i:s',$data['exp'])
+				'SESSION_TOKEN' => $data['user']['token'],
+				'SESSION_EXPIRED' => date('Y-m-d H:i:s',$data['user']['exp'])
 			);
 			$this->db->insert('session', $insert_session);
 			return TRUE;
