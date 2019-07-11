@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_main');
+		$this->load->model('M_main');
 	}
 
 	public function islogged()
@@ -40,7 +40,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_error_delimiters('','');
 
 		if ($this->form_validation->run() == TRUE) {
-			if($this->m_main->login($email,$password)){
+			if($this->M_main->login($email,$password)){
 				$data = array(
 					'msg' => 'Login Success, welcome!',
 					'valid' =>  true 

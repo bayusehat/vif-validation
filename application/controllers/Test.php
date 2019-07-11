@@ -13,11 +13,14 @@ class Test extends Base_controller {
 	{
 		$this->load->model('M_main');
 		$username = 'aryabayu23@gmail.com';
-		$password = sha1('bayu123');
+		$password = 'bayu123';
 
-		$result = $this->M_main->get_row($username,$password)->result();
-		// $data['branch'] = $result->BRACH_TITLE;
-		// $data['groups'] = $result->GROUP_ID;
+		// $result = $this->M_main->get_row($username,$password)->result();
+		// // $data['branch'] = $result->BRACH_TITLE;
+		// // $data['groups'] = $result->GROUP_ID;
+		// print_r($result);
+
+		$result = $this->M_main->login($username,$password);
 		print_r($result);
 	}
 

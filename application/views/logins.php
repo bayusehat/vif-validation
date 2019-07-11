@@ -27,7 +27,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post" action="<?= base_url();?>login/login_user">
 					<div class="form-group">
 						<center><img src="<?= base_url();?>assets/images/vif.png"></center>
 					</div>
@@ -42,9 +42,9 @@
 					</div>
 					<div class="form-group">
 						<div class="container-login100-form-btn">
-							<button class="btn btn-primary btn-block" type="submit" id="btnLogin">
+							<input class="btn btn-primary btn-block" type="submit" id="btnLogin">
 								Login
-							</button>
+							<!-- </button> -->
 						</div>
 					</div>
 					<div class="form-group">

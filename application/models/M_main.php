@@ -61,15 +61,15 @@ class M_main extends CI_Model{
 
 		$data = json_decode($result,true);
 
-		if($data['token'] != ""){
+		if($data['user']['token'] != ""){
 			$userdata = array(
-				'username' => $data['username'],
+				'username' => $data['user']['username'],
 				'login' => TRUE,
-				'token' =>  $data['token'],
-				'exp' => $data['exp'],
+				'token' =>  $data['user']['token'],
+				// 'exp' => $data['exp'],
 				'ip_address' => $_SERVER['REMOTE_ADDR'],
-				'id' => $data['id'],
-				'branch' => $data['branch']
+				'id' => $data['user']['id'],
+				// 'branch' => $data['branch']
 			);
 			$this->session->set_userdata($userdata);
 			$insert_session = array(

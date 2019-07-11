@@ -41,14 +41,15 @@ class Auth extends BD_Controller {
             $token['password'] = $p;
             $date = new DateTime();
             $token['iat'] = $date->getTimestamp();
-            $token['exp'] = $date->getTimestamp() + 60*60*5; 
+            $token['exp'] = $date->getTimestamp() + 60*60*5;
+            $output = array(); 
             $output['user']['token'] = JWT::encode($token,$kunci);
             //API
             $output['user']['id'] = $check->row()->USER_ID;
             $output['user']['email'] = $u;
             $output['user']['username'] = $check->row()->NAME;
             foreach ($check->result() as $i => $item) {
-                $ess = $output['user']['groups'][$item->GROUP_TITLE]->branch = $this->getBranchByGroup($item->GROUP_ID);
+                $output['user']['groups'][$item->GROUP_TITLE]['branch'] = $this->getBranchByGroup($item->GROUP_ID);
              } 
             $this->set_response($output, REST_Controller::HTTP_OK); 
         }
