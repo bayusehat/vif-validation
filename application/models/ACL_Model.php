@@ -9,7 +9,7 @@ class ACL_Model extends CI_Model {
 	
 	public function GetAccess()
 	{
-		$this->db->select('*, PARENT_ID as parentId, ACCESS_ID as id');
+		$this->db->select('*, PARENT_ID as parentId, ACCESS_ID as id')->order_by("ACCESS_INDEX", "asc");;
 		
 		return $this->db->get('access')->result();
 	}
